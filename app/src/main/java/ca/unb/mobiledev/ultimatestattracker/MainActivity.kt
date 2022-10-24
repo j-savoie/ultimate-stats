@@ -6,15 +6,14 @@ import android.os.Bundle
 import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
-    private var button : Button = findViewById<Button>(R.id.button)
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val intent = Intent(this, CreateTeam::class.java)
-
+        val button : Button = findViewById<Button>(R.id.button)
         button.setOnClickListener {
+            val intent = Intent(this, CreateTeam::class.java)
             startActivity(intent)
         }
     }
-
 }
