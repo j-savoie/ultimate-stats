@@ -28,6 +28,9 @@
         <activity android:name=".AddPlayers">
 
         </activity>
+        <activity android:name=".ViewTeams">
+
+        </activity>
     </application>
 
 </manifest>

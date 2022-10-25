@@ -6,6 +6,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ca.unb.mobiledev.ultimatestattracker.model.Team
 import ca.unb.mobiledev.ultimatestattracker.model.Player
@@ -40,6 +41,7 @@ class AddPlayers : AppCompatActivity() {
             }
             var player = Player(fname,lname,number, gender)
             team.players.add(player)
+            Toast.makeText(this, "Player Added: $fname $lname", Toast.LENGTH_SHORT).show()
             fNameField.setText("")
             lnameField.setText("")
             numberField.setText("")
