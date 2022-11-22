@@ -7,21 +7,32 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import ca.unb.mobiledev.ultimatestattracker.model.Player
 import ca.unb.mobiledev.ultimatestattracker.model.Team
-import java.io.Serializable
 
 class CreateTeam : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.create_team)
-        val button : Button = findViewById<Button>(R.id.button2)
+        val btnSave : Button = findViewById<Button>(R.id.btnCreateTeam)
         val editText = findViewById<EditText>(R.id.editTextTeamName)
         var teamName : String
-        button.setOnClickListener {
+        btnSave.setOnClickListener {
             teamName = editText.text.toString()
-            val intent = Intent(this, AddPlayers::class.java)
             var playerList = ArrayList<Player>()
             var team = Team(teamName, playerList)
-            intent.putExtra("AddPlayers", team)
+
+            // Save team to file system
+            team.save(this)
+
+            // Check dir after save
+            val teamsDir = getDir("teams", MODE_PRIVATE)
+            println(teamsDir.absolutePath)
+            for(file in teamsDir.listFiles()!!){
+                println(file.name)
+            }
+
+            // Launch AddPlayers activity
+            val intent = Intent(this, AddPlayers::class.java)
+            intent.putExtra("Team", team)
             startActivity(intent)
         }
     }
