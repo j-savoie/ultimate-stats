@@ -1,4 +1,4 @@
-package ca.unb.mobiledev.ultimatestattracker
+package ca.unb.mobiledev.ultimatestattracker.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -9,6 +9,9 @@ import android.widget.TextView
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.widget.ImageButton
+import ca.unb.mobiledev.ultimatestattracker.MainActivity
+import ca.unb.mobiledev.ultimatestattracker.R
+import ca.unb.mobiledev.ultimatestattracker.ViewTeam
 import ca.unb.mobiledev.ultimatestattracker.model.Team
 
 class TeamAdapter(
@@ -35,7 +38,7 @@ class TeamAdapter(
         holder.textName.text = item.teamName
         holder.textNumber.text = position.toString()
         holder.textName.setOnClickListener {
-            val intent = Intent(parentActivity, MainActivity::class.java)
+            val intent = Intent(parentActivity, ViewTeam::class.java)
             intent.putExtra("team", item)
             parentActivity.startActivity(intent)
         }

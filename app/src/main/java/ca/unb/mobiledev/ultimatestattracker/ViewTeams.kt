@@ -7,8 +7,8 @@ import android.os.Handler
 import android.os.Looper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ca.unb.mobiledev.ultimatestattracker.adapter.TeamAdapter
 import ca.unb.mobiledev.ultimatestattracker.helper.JsonUtils
-import ca.unb.mobiledev.ultimatestattracker.model.Player
 import ca.unb.mobiledev.ultimatestattracker.model.Team
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.concurrent.Executors
@@ -19,7 +19,7 @@ class ViewTeams : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.view_teams)
+        setContentView(R.layout.activity_view_teams)
 
         // Set up the RecyclerView
         adapter = TeamAdapter(this, ArrayList())
@@ -45,7 +45,7 @@ class ViewTeams : AppCompatActivity() {
                 val dir = getDir("teams", MODE_PRIVATE)
                 val teams : ArrayList<Team> = ArrayList()
                 val json = JsonUtils()
-                for(file in dir.listFiles()) {
+                for(file in dir.listFiles()!!) {
                     val team = json.convertJsonToObject(file.readText(), Team::class.java) as Team
                     teams.add(team)
                 }
