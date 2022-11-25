@@ -2,6 +2,9 @@ package ca.unb.mobiledev.ultimatestattracker.helper;
 import android.util.Log;
 
 import com.google.gson.*;
+
+import java.util.ArrayList;
+
 public class JsonUtils {
 
     public String convertObjectToJson(Object obj){
@@ -27,6 +30,4 @@ public class JsonUtils {
             return null;
         }
     }
-
-
 }

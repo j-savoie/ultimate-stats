@@ -11,7 +11,7 @@ import ca.unb.mobiledev.ultimatestattracker.model.Team
 class CreateTeam : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.create_team)
+        setContentView(R.layout.activity_create_team)
         val btnSave : Button = findViewById<Button>(R.id.btnCreateTeam)
         val editText = findViewById<EditText>(R.id.editTextTeamName)
         var teamName : String

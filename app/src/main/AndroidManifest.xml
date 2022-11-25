@@ -23,13 +23,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".CreateTeam">
-
         </activity>
         <activity android:name=".AddPlayers">
-
         </activity>
         <activity android:name=".ViewTeams">
-
+        </activity>
+        <activity android:name=".ViewTeam">
         </activity>
     </application>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

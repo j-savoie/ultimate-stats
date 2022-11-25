@@ -1,6 +1,9 @@
 package ca.unb.mobiledev.ultimatestattracker.model
 
 class Player : java.io.Serializable {
+    fun getFormattedName(): String {
+        return "[$number] $fName $lName"
+    }
 
     var fName: String
     var lName: String

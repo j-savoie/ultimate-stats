@@ -14,7 +14,7 @@ import ca.unb.mobiledev.ultimatestattracker.model.Team
 class AddPlayers : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.add_players)
+        setContentView(R.layout.acitivity_add_players)
         val fNameField = findViewById<EditText>(R.id.editTextfName)
         val lnameField = findViewById<EditText>(R.id.editTextLname)
         val numberField = findViewById<EditText>(R.id.editTextNumber)

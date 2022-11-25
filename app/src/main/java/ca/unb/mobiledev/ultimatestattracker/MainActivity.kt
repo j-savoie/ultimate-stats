@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
         val btn_new_game : Button = findViewById<Button>(R.id.btn_new_game)
         btn_new_game.setOnClickListener {
-//            val intent = Intent(this, CreateTeam::class.java)
+//            val intent = Intent(this, ViewTeam::class.java)
 //            startActivity(intent)
             Toast.makeText(this, "Functionality not yet implemented", Toast.LENGTH_SHORT).show()
         }
