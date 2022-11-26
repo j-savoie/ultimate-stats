@@ -2,6 +2,7 @@ package ca.unb.mobiledev.ultimatestattracker
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ class CreateTeam : AppCompatActivity(){
         val editText = findViewById<EditText>(R.id.editTextTeamName)
         var teamName : String
         btnSave.setOnClickListener {
+            // Make team object with team name
             teamName = editText.text.toString()
             var playerList = ArrayList<Player>()
             var team = Team(teamName, playerList)
@@ -23,17 +25,15 @@ class CreateTeam : AppCompatActivity(){
             // Save team to file system
             team.save(this)
 
-            // Check dir after save
-            val teamsDir = getDir("teams", MODE_PRIVATE)
-            println(teamsDir.absolutePath)
-            for(file in teamsDir.listFiles()!!){
-                println(file.name)
-            }
-
             // Launch AddPlayers activity
-            val intent = Intent(this, AddPlayers::class.java)
-            intent.putExtra("Team", team)
-            startActivity(intent)
+            val teams = intent.extras?.getSerializable("teams") as ArrayList<Team>
+            teams.add(team)
+            Log.d("CreateTeam", "Team added to list: $teams")
+            val intent = Intent(this, ViewTeam::class.java)
+            intent.putExtra("teams", teams)
+            intent.putExtra("team", team)
+            setResult(RESULT_OK, intent)
+            finish()
         }
     }
 }

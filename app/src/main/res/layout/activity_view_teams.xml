@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fadingEdge="vertical"
+    android:fadingEdgeLength="20dp"
     tools:context=".MainActivity">
 
     <TextView
@@ -38,9 +40,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listTeams"
-        android:layout_width="409dp"
-        android:layout_height="503dp"
+        android:layout_width="407dp"
+        android:layout_height="470dp"
         android:layout_marginTop="38dp"
+        android:fadingEdge="vertical"
+        android:requiresFadingEdge="vertical"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />

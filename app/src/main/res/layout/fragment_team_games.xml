@@ -4,14 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbarStyle="outsideInset"
     tools:context=".FragTeamGames">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerGames"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
+        android:layout_width="396dp"
+        android:layout_height="302dp"
+        android:layout_marginTop="200dp"
+        android:fadingEdge="vertical"
+        android:requiresFadingEdge="vertical"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

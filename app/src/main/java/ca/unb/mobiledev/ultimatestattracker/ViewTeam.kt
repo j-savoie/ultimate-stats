@@ -1,7 +1,10 @@
 package ca.unb.mobiledev.ultimatestattracker
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import ca.unb.mobiledev.ultimatestattracker.adapter.PlayerAdapter
 import ca.unb.mobiledev.ultimatestattracker.adapter.ViewPagerAdapter
 import ca.unb.mobiledev.ultimatestattracker.databinding.ActivityViewTeamBinding
 import ca.unb.mobiledev.ultimatestattracker.model.Team
@@ -17,8 +20,13 @@ class ViewTeam : AppCompatActivity() {
     lateinit var binding: ActivityViewTeamBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         val extras = intent.extras
-        val team = extras?.get("team") as Team
+        if (extras == null) finish()
+        val team = extras?.getSerializable("team") as Team
         super.onCreate(savedInstanceState)
+
+        // Make Bundle to pass team to fragments
+        val bundle = Bundle()
+        bundle.putSerializable("team", team)
 
         // Set up the binding
         binding = ActivityViewTeamBinding.inflate(layoutInflater)
@@ -27,7 +35,7 @@ class ViewTeam : AppCompatActivity() {
 
         // Set up the ViewPager
         val viewPager = binding.viewPager
-        val adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
+        val adapter = ViewPagerAdapter(supportFragmentManager, lifecycle, bundle)
         viewPager.adapter = adapter
 
         // Set up the TabLayout

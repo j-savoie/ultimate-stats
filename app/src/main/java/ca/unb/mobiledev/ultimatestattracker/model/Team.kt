@@ -2,6 +2,8 @@ package ca.unb.mobiledev.ultimatestattracker.model
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import ca.unb.mobiledev.ultimatestattracker.helper.FileUtils.getTeamDir
+import ca.unb.mobiledev.ultimatestattracker.helper.FileUtils.toFileName
 import ca.unb.mobiledev.ultimatestattracker.helper.JsonUtils
 import java.io.File
 
@@ -24,9 +26,9 @@ class Team : java.io.Serializable {
 
     fun save(c : Context) {
         val json = JsonUtils()
-        val dir = c.getDir("teams", MODE_PRIVATE)
-        val fileName = "${teamName}.json"
-        val file = File(dir, fileName)
+        val teamDir = getTeamDir(teamName, c)
+        val fileName = "${toFileName(teamName)}.json"
+        val file = File(teamDir, fileName)
         val jsonStr = json.convertObjectToJson(this)
         if (jsonStr != null)
             file.writeText(jsonStr)
