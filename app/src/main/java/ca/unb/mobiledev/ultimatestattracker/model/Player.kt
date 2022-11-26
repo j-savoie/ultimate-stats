@@ -19,4 +19,8 @@ class Player : java.io.Serializable {
     enum class GENDER {
         Male, Female, Other
     }
+
+    override fun toString(): String {
+        return getFormattedName()
+    }
 }

@@ -1,5 +1,6 @@
 package ca.unb.mobiledev.ultimatestattracker
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
@@ -21,7 +22,7 @@ class AddPlayers : AppCompatActivity() {
         val genderSpinner = findViewById<Spinner>(R.id.spinner)
         val button : Button = findViewById(R.id.AddPlayerButton)
         val completeRoster : Button = findViewById(R.id.completeRoster)
-        val team : Team = intent.getSerializableExtra("Team") as Team
+        val team : Team = intent.getSerializableExtra("team") as Team
         val genders = arrayOf("Male", "Female", "Other")
         val adapter : ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_spinner_item, genders)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -51,6 +52,10 @@ class AddPlayers : AppCompatActivity() {
                 Log.e("Player: ", player.fName + " " + player.lName + " (" + player.number + ")")
             }
             team.save(this)
+            val intent = Intent(this, ViewTeam::class.java)
+            intent.putExtra("team", team)
+            setResult(RESULT_OK, intent)
+            finish()
         }
     }
 }

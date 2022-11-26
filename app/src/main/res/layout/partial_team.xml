@@ -1,38 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical"
+    android:gravity="left|center_vertical"
     android:paddingLeft="20dp"
-    android:paddingTop="5dp"
-    android:paddingRight="20dp"
-    android:paddingBottom="5dp">
+    android:paddingTop="10dp"
+    android:paddingEnd="10dp"
+    android:paddingRight="20dp">
 
-    <TextView
-        android:id="@+id/textPlayerNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/imgTeamLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_gravity="center_vertical"
-        android:text="12"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <TextView
-        android:id="@+id/textPlayerName"
+        android:id="@+id/textTeamName"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
+        android:fontFamily="sans-serif-medium"
         android:gravity="center"
-        android:paddingStart="20dp"
         android:text="TextView"
         android:textAlignment="textStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <ImageButton
-        android:id="@+id/btnDeletePlayer"
+        android:id="@+id/btnDeleteTeam"
         style="@android:style/Widget.Holo.Light.ImageButton"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
