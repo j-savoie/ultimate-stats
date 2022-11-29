@@ -15,20 +15,20 @@ import ca.unb.mobiledev.ultimatestattracker.model.Team
 class AddPlayers : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.acitivity_add_players)
+        setContentView(R.layout.activity_add_players)
         val fNameField = findViewById<EditText>(R.id.editTextfName)
         val lnameField = findViewById<EditText>(R.id.editTextLname)
         val numberField = findViewById<EditText>(R.id.editTextNumber)
         val genderSpinner = findViewById<Spinner>(R.id.spinner)
-        val button : Button = findViewById(R.id.AddPlayerButton)
+        val btnAddPlayer : Button = findViewById(R.id.AddPlayerButton)
         val completeRoster : Button = findViewById(R.id.completeRoster)
         val team : Team = intent.getSerializableExtra("team") as Team
-        val genders = arrayOf("Male", "Female", "Other")
+        val genders = arrayOf("Male", "Female", "Other") // TODO reference instead to Player.Gender type for extensibility?
         val adapter : ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_spinner_item, genders)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         genderSpinner.adapter = adapter
 
-        button.setOnClickListener{
+        btnAddPlayer.setOnClickListener{
             val fname = fNameField.text.toString()
             val lname = lnameField.text.toString()
             val number = numberField.text.toString().toInt()

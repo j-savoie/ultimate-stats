@@ -16,7 +16,7 @@
         app:layout_constraintStart_toEndOf="@+id/AddPlayerButton" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textLabelGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Gender"
@@ -33,7 +33,7 @@
         app:layout_constraintBottom_toTopOf="@+id/AddPlayerButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textLabelGender"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
@@ -43,7 +43,7 @@
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:hint="Last Name"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextNumber"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,9 +58,9 @@
         android:layout_marginBottom="35dp"
         android:ems="10"
         android:hint="Number"
-        android:inputType="numberSigned|textPersonName"
+        android:inputType="numberSigned"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/textLabelGender"
         app:layout_constraintStart_toStartOf="@+id/editTextLname"
         app:layout_constraintTop_toBottomOf="@+id/editTextLname" />
 
@@ -72,7 +72,7 @@
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="First Name"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextLname"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +92,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/titleAddPlayer"
         android:layout_width="237dp"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
