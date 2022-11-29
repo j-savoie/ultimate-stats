@@ -11,4 +11,8 @@ class StatTracker : AppCompatActivity() {
         setContentView(R.layout.stat_tracker)
 
     }
+    val activePlayer = null
+    val previousPlayers = null
+
+
 }

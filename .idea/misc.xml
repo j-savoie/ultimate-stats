@@ -6,6 +6,11 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/add_players.xml" value="0.21663665771484375" />
         <entry key="app/src/main/res/layout/create_team.xml" value="0.20208333333333334" />
+        <entry key="app/src/main/res/layout/fragment_team_players.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/fragment_team_stats.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/partial_player.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/partial_team.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/stat_tracker.xml" value="0.21822916666666667" />
       </map>
     </option>
   </component>

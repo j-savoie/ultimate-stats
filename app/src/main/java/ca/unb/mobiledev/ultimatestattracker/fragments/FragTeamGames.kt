@@ -1,10 +1,12 @@
 package ca.unb.mobiledev.ultimatestattracker.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import ca.unb.mobiledev.ultimatestattracker.StatTracker
 import ca.unb.mobiledev.ultimatestattracker.databinding.FragmentTeamGamesBinding
 import ca.unb.mobiledev.ultimatestattracker.databinding.FragmentTeamPlayersBinding
 
@@ -36,6 +38,13 @@ class FragTeamGames : Fragment() {
     ): View? {
         _binding = FragmentTeamGamesBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        val newGame = binding.btnNewGame
+
+        newGame.setOnClickListener{
+            val intent = Intent(activity, StatTracker::class.java )
+            startActivity(intent)
+        }
         return view
     }
 }

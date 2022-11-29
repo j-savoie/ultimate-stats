@@ -1,7 +1,9 @@
 package ca.unb.mobiledev.ultimatestattracker
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import ca.unb.mobiledev.ultimatestattracker.adapter.PlayerAdapter
@@ -49,5 +51,7 @@ class ViewTeam : AppCompatActivity() {
 
         // Set title in toolbar
         toolbar.title = team.teamName
+
+
     }
 }
