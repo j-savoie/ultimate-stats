@@ -5,6 +5,7 @@
     <color name="colorPrimaryLight">#03DAC5</color>
     <color name="colorPrimaryWhite">#D1ECE9</color>
 
+
     <color name="colorSecondary">#DA0063</color>
     <color name="colorSecondaryDark">#9A0036</color>
     <color name="colorSecondaryLight">#FF4081</color>
@@ -29,5 +30,7 @@
     <color name="tealDark">#FF018786</color>
 
     <color name="black">#FF000000</color>
+    <color name="grey">#979797</color>
     <color name="white">#FFFFFFFF</color>
+
 </resources>

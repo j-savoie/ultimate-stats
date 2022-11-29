@@ -94,14 +94,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/playLogs"
-        android:layout_width="376dp"
-        android:layout_height="250dp"
-        android:layout_marginStart="64dp"
+        android:layout_width="316dp"
+        android:layout_height="251dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Start_Stop"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/player1" />
+        app:layout_constraintEnd_toStartOf="@+id/Start_Stop" />
 
     <TextView
         android:id="@+id/otherTeamName"
@@ -122,19 +119,16 @@
         android:text="TextView"
         app:layout_constraintEnd_toStartOf="@+id/mainTimer"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/player1"
+        app:layout_constraintStart_toStartOf="@+id/myTeamScore"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/mainTimer"
         android:layout_width="213dp"
         android:layout_height="50dp"
-        android:layout_marginStart="125dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
         app:layout_constraintEnd_toStartOf="@+id/Start_Stop"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/player1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -153,12 +147,9 @@
         android:id="@+id/myTeamScore"
         android:layout_width="84dp"
         android:layout_height="52dp"
-        android:layout_marginStart="48dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
         app:layout_constraintEnd_toStartOf="@+id/secondaryTimer"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/player2"
         app:layout_constraintTop_toBottomOf="@+id/myTeamName" />
 
     <TextView
@@ -171,67 +162,6 @@
         app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toEndOf="@+id/mainTimer"
         app:layout_constraintTop_toBottomOf="@+id/otherTeamName" />
-
-    <ToggleButton
-        android:id="@+id/player6"
-        android:layout_width="116dp"
-        android:layout_height="48dp"
-        android:text="ToggleButton"
-        app:layout_constraintStart_toStartOf="@+id/player5"
-        app:layout_constraintTop_toBottomOf="@+id/player5" />
-
-    <ToggleButton
-        android:id="@+id/player5"
-        android:layout_width="116dp"
-        android:layout_height="48dp"
-        android:text="ToggleButton"
-        app:layout_constraintStart_toStartOf="@+id/player4"
-        app:layout_constraintTop_toBottomOf="@+id/player4" />
-
-    <ToggleButton
-        android:id="@+id/player2"
-        android:layout_width="116dp"
-        android:layout_height="48dp"
-        android:text="ToggleButton"
-        app:layout_constraintStart_toStartOf="@+id/player1"
-        app:layout_constraintTop_toBottomOf="@+id/player1" />
-
-    <ToggleButton
-        android:id="@+id/player7"
-        android:layout_width="116dp"
-        android:layout_height="48dp"
-        android:text="ToggleButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/player6"
-        app:layout_constraintTop_toBottomOf="@+id/player6"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ToggleButton
-        android:id="@+id/player3"
-        android:layout_width="116dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="7dp"
-        android:text="ToggleButton"
-        app:layout_constraintStart_toStartOf="@+id/player2"
-        app:layout_constraintTop_toBottomOf="@+id/player2" />
-
-    <ToggleButton
-        android:id="@+id/player1"
-        android:layout_width="116dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:text="ToggleButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ToggleButton
-        android:id="@+id/player4"
-        android:layout_width="116dp"
-        android:layout_height="48dp"
-        android:text="ToggleButton"
-        app:layout_constraintStart_toStartOf="@+id/player3"
-        app:layout_constraintTop_toBottomOf="@+id/player3" />
 
     <ToggleButton
         android:id="@+id/Start_Stop"
@@ -252,5 +182,64 @@
         app:cornerRadius="0dp"
         app:layout_constraintStart_toStartOf="@+id/Start_Stop"
         app:layout_constraintTop_toBottomOf="@+id/Start_Stop" />
+
+    <RadioGroup
+        android:layout_width="161dp"
+        android:layout_height="397dp"
+        android:weightSum="1"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="7dp">
+
+        <RadioButton
+            android:id="@+id/player1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/yourbuttonbackground"
+            android:checked="false"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/player2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/yourbuttonbackground"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/player3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/yourbuttonbackground"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/player4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/yourbuttonbackground"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/player5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/yourbuttonbackground"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/player6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/yourbuttonbackground"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/player7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/yourbuttonbackground"
+            android:checked="true"
+            android:text="RadioButton" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
