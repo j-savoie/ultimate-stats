@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/injury"
+        android:layout_width="111dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="#673AB7"
+        android:text="Injury"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/Start_Stop"
+        app:layout_constraintTop_toBottomOf="@+id/steal"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/halftime"
+        android:layout_width="111dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:backgroundTint="#FBC02D"
+        android:text="Halftime"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/timeout"
+        android:layout_width="111dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#FBC02D"
+        android:text="Timeout"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/halftime"
+        app:layout_constraintTop_toBottomOf="@+id/halftime" />
+
+    <Button
+        android:id="@+id/goal"
+        android:layout_width="111dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="1dp"
+        android:backgroundTint="#4CAF50"
+        android:text="Goal"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/halftime"
+        app:layout_constraintTop_toBottomOf="@+id/pass" />
+
+    <Button
+        android:id="@+id/turnover"
+        android:layout_width="111dp"
+        android:layout_height="65dp"
+        android:backgroundTint="#E61919"
+        android:text="Turnover"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/halftime"
+        app:layout_constraintTop_toBottomOf="@+id/timeout" />
+
+    <Button
+        android:id="@+id/pass"
+        android:layout_width="111dp"
+        android:layout_height="65dp"
+        android:backgroundTint="#4CAF50"
+        android:text="Pass"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/halftime"
+        app:layout_constraintTop_toBottomOf="@+id/turnover" />
+
+    <Button
+        android:id="@+id/steal"
+        android:layout_width="111dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="1dp"
+        android:backgroundTint="#4CAF50"
+        android:text="Steal"
+        app:cornerRadius="0dp"
+        app:layout_constraintStart_toStartOf="@+id/Start_Stop"
+        app:layout_constraintTop_toBottomOf="@+id/foul" />
+
+    <Button
+        android:id="@+id/foul"
+        android:layout_width="111dp"
+        android:layout_height="65dp"
+        android:backgroundTint="#E61919"
+        android:text="Foul"
+        app:cornerRadius="0dp"
+        app:layout_constraintStart_toStartOf="@+id/Start_Stop"
+        app:layout_constraintTop_toBottomOf="@+id/opGoal" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/playLogs"
+        android:layout_width="376dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Start_Stop"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/player1" />
+
+    <TextView
+        android:id="@+id/otherTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="44dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/otherTeamScore"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/myTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/mainTimer"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/player1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mainTimer"
+        android:layout_width="213dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/Start_Stop"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/player1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/secondaryTimer"
+        android:layout_width="144dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/playLogs"
+        app:layout_constraintStart_toStartOf="@+id/mainTimer"
+        app:layout_constraintTop_toBottomOf="@+id/mainTimer"
+        app:layout_constraintVertical_bias="0.375" />
+
+    <TextView
+        android:id="@+id/myTeamScore"
+        android:layout_width="84dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/secondaryTimer"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/player2"
+        app:layout_constraintTop_toBottomOf="@+id/myTeamName" />
+
+    <TextView
+        android:id="@+id/otherTeamScore"
+        android:layout_width="84dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/Start_Stop"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toEndOf="@+id/mainTimer"
+        app:layout_constraintTop_toBottomOf="@+id/otherTeamName" />
+
+    <ToggleButton
+        android:id="@+id/player6"
+        android:layout_width="116dp"
+        android:layout_height="48dp"
+        android:text="ToggleButton"
+        app:layout_constraintStart_toStartOf="@+id/player5"
+        app:layout_constraintTop_toBottomOf="@+id/player5" />
+
+    <ToggleButton
+        android:id="@+id/player5"
+        android:layout_width="116dp"
+        android:layout_height="48dp"
+        android:text="ToggleButton"
+        app:layout_constraintStart_toStartOf="@+id/player4"
+        app:layout_constraintTop_toBottomOf="@+id/player4" />
+
+    <ToggleButton
+        android:id="@+id/player2"
+        android:layout_width="116dp"
+        android:layout_height="48dp"
+        android:text="ToggleButton"
+        app:layout_constraintStart_toStartOf="@+id/player1"
+        app:layout_constraintTop_toBottomOf="@+id/player1" />
+
+    <ToggleButton
+        android:id="@+id/player7"
+        android:layout_width="116dp"
+        android:layout_height="48dp"
+        android:text="ToggleButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/player6"
+        app:layout_constraintTop_toBottomOf="@+id/player6"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ToggleButton
+        android:id="@+id/player3"
+        android:layout_width="116dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="7dp"
+        android:text="ToggleButton"
+        app:layout_constraintStart_toStartOf="@+id/player2"
+        app:layout_constraintTop_toBottomOf="@+id/player2" />
+
+    <ToggleButton
+        android:id="@+id/player1"
+        android:layout_width="116dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="ToggleButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/player4"
+        android:layout_width="116dp"
+        android:layout_height="48dp"
+        android:text="ToggleButton"
+        app:layout_constraintStart_toStartOf="@+id/player3"
+        app:layout_constraintTop_toBottomOf="@+id/player3" />
+
+    <ToggleButton
+        android:id="@+id/Start_Stop"
+        android:layout_width="109dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:text="Start_Stop"
+        app:layout_constraintEnd_toStartOf="@+id/halftime"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/opGoal"
+        android:layout_width="111dp"
+        android:layout_height="65dp"
+        android:backgroundTint="#E61919"
+        android:text="Oponent Goal"
+        app:cornerRadius="0dp"
+        app:layout_constraintStart_toStartOf="@+id/Start_Stop"
+        app:layout_constraintTop_toBottomOf="@+id/Start_Stop" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
