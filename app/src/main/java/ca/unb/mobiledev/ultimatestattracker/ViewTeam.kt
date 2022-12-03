@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ca.unb.mobiledev.ultimatestattracker.adapter.PlayerAdapter
 import ca.unb.mobiledev.ultimatestattracker.adapter.ViewPagerAdapter
 import ca.unb.mobiledev.ultimatestattracker.databinding.ActivityViewTeamBinding
+import ca.unb.mobiledev.ultimatestattracker.helper.FileUtils.getGamesFromFileSystem
 import ca.unb.mobiledev.ultimatestattracker.model.Team
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -24,18 +25,20 @@ class ViewTeam : AppCompatActivity() {
         val extras = intent.extras
         if (extras == null) finish()
         val team = extras?.getSerializable("team") as Team
+        val games = getGamesFromFileSystem(team.teamName, this)
         super.onCreate(savedInstanceState)
 
-        // Make Bundle to pass team to fragments
+        // Make Bundle to pass info to fragments
         val bundle = Bundle()
         bundle.putSerializable("team", team)
+        bundle.putSerializable("games", games)
 
         // Set up the binding
         binding = ActivityViewTeamBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
-        // Set up the ViewPager
+        // Set up the ViewPager and Adapter
         val viewPager = binding.viewPager
         val adapter = ViewPagerAdapter(supportFragmentManager, lifecycle, bundle)
         viewPager.adapter = adapter
@@ -48,10 +51,7 @@ class ViewTeam : AppCompatActivity() {
 
         val toolbar = binding.toolbar
         val tabs = binding.tabLayout
-
         // Set title in toolbar
         toolbar.title = team.teamName
-
-
     }
 }

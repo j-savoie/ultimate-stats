@@ -35,6 +35,6 @@ class Team : java.io.Serializable {
     }
 
     override fun toString() : String {
-        return "Team Name: ${this.teamName} \nPlayers: ${this.players}"
+        return "Team Name: ${this.teamName} - Players: ${this.players}"
     }
 }

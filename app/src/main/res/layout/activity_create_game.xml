@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/titleCreateGame"
+        android:layout_width="237dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="101dp"
+        android:layout_marginBottom="47dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Create Game"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        android:typeface="sans"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerTeams"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="17dp"
+        android:text="Team:"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerTeams"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/spinnerTeams" />
+
+    <TextView
+        android:id="@+id/textViewOppTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="19dp"
+        android:text="Team:"
+        app:layout_constraintEnd_toStartOf="@+id/editTextOppTeam"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editTextOppTeam" />
+
+    <Spinner
+        android:id="@+id/spinnerTeams"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="86dp"
+        android:layout_marginBottom="26dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewVersus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewTeam"
+        app:layout_constraintTop_toBottomOf="@+id/titleCreateGame" />
+
+    <TextView
+        android:id="@+id/textViewVersus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="38dp"
+        android:text="VS."
+        app:layout_constraintBottom_toTopOf="@+id/editTextOppTeam"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerTeams" />
+
+    <EditText
+        android:id="@+id/editTextOppTeam"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="89dp"
+        android:layout_marginBottom="38dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPointCap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewOppTeam"
+        app:layout_constraintTop_toBottomOf="@+id/textViewVersus" />
+
+    <EditText
+        android:id="@+id/editTextPointCap"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:hint="Point Cap"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTODuration"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTOPerHalf"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextOppTeam" />
+
+    <EditText
+        android:id="@+id/editTextTODuration"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="43dp"
+        android:ems="10"
+        android:hint="TO Duration"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/btnStartGame"
+        app:layout_constraintEnd_toStartOf="@+id/editTextHTDuration"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPointCap" />
+
+    <EditText
+        android:id="@+id/editTextTOPerHalf"
+        android:layout_width="0dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="88dp"
+        android:ems="10"
+        android:hint="TO / Half"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextPointCap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextPointCap" />
+
+    <EditText
+        android:id="@+id/editTextHTDuration"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="89dp"
+        android:ems="10"
+        android:hint="HT Duration"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextTODuration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextTODuration" />
+
+    <Button
+        android:id="@+id/btnStartGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginBottom="134dp"
+        android:text="Start Game"
+        app:icon="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editTextTODuration"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTODuration" />
+</androidx.constraintlayout.widget.ConstraintLayout>

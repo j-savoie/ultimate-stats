@@ -6,29 +6,36 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import ca.unb.mobiledev.ultimatestattracker.CreateGame
+import ca.unb.mobiledev.ultimatestattracker.R
 import ca.unb.mobiledev.ultimatestattracker.StatTracker
+import ca.unb.mobiledev.ultimatestattracker.adapter.GameAdapter
+import ca.unb.mobiledev.ultimatestattracker.adapter.PlayerAdapter
 import ca.unb.mobiledev.ultimatestattracker.databinding.FragmentTeamGamesBinding
 import ca.unb.mobiledev.ultimatestattracker.databinding.FragmentTeamPlayersBinding
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
+import ca.unb.mobiledev.ultimatestattracker.helper.FileUtils.getGamesFromFileSystem
+import ca.unb.mobiledev.ultimatestattracker.model.Game
+import ca.unb.mobiledev.ultimatestattracker.model.Team
 
 /**
  * A simple [Fragment] subclass.
- * Use the [FragTeamPlayers.newInstance] factory method to
- * create an instance of this fragment.
+ * Provide the view for the ViewTeam's Games tab.
  */
 class FragTeamGames : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var team: String? = null //:Team
     private var _binding: FragmentTeamGamesBinding? = null
     private val binding get() = _binding!!
+    private lateinit var games: ArrayList<Game>
+    private lateinit var team: Team
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: GameAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            team = it.getString(ARG_PARAM1)
+            games = it.getSerializable("games") as ArrayList<Game>
+            team = it.getSerializable("team") as Team
         }
     }
 
@@ -39,12 +46,21 @@ class FragTeamGames : Fragment() {
         _binding = FragmentTeamGamesBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        val newGame = binding.btnNewGame
+        // Set up the recycler view
+        recyclerView = view.findViewById(R.id.recyclerGames)
+        adapter = GameAdapter(view.context, games)
+        val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(view.context)
+        recyclerView.layoutManager = layoutManager
+        adapter.setGames(games)
+        recyclerView.adapter = adapter
 
+        val newGame = binding.btnNewGame
         newGame.setOnClickListener{
-            val intent = Intent(activity, StatTracker::class.java )
+            val intent = Intent(activity, CreateGame::class.java )
+            intent.putExtra("team", team)
             startActivity(intent)
         }
+
         return view
     }
 }

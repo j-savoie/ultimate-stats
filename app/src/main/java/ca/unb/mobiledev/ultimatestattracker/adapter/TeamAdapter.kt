@@ -1,6 +1,5 @@
 package ca.unb.mobiledev.ultimatestattracker.adapter
 
-import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +10,6 @@ import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.widget.ImageButton
 import android.widget.ImageView
-import ca.unb.mobiledev.ultimatestattracker.MainActivity
 import ca.unb.mobiledev.ultimatestattracker.R
 import ca.unb.mobiledev.ultimatestattracker.ViewTeam
 import ca.unb.mobiledev.ultimatestattracker.helper.FileUtils.getTeamDir
