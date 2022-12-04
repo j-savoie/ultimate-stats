@@ -194,7 +194,8 @@
             android:id="@+id/player1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:button="@drawable/yourbuttonbackground"
+            android:background="@drawable/yourbuttonbackground"
+            android:button="@android:color/transparent"
             android:checked="false"
             android:text="RadioButton" />
 
@@ -202,43 +203,51 @@
             android:id="@+id/player2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:button="@drawable/yourbuttonbackground"
+            android:background="@drawable/yourbuttonbackground"
+            android:button="@android:color/transparent"
             android:text="RadioButton" />
 
         <RadioButton
             android:id="@+id/player3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:button="@drawable/yourbuttonbackground"
+            android:background="@drawable/yourbuttonbackground"
+            android:button="@android:color/transparent"
+            android:checked="true"
             android:text="RadioButton" />
 
         <RadioButton
             android:id="@+id/player4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:button="@drawable/yourbuttonbackground"
+            android:background="@drawable/yourbuttonbackground"
+            android:button="@android:color/transparent"
+            android:checked="true"
             android:text="RadioButton" />
 
         <RadioButton
             android:id="@+id/player5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:button="@drawable/yourbuttonbackground"
+            android:background="@drawable/yourbuttonbackground"
+            android:button="@android:color/transparent"
             android:text="RadioButton" />
 
         <RadioButton
             android:id="@+id/player6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:button="@drawable/yourbuttonbackground"
+            android:background="@drawable/yourbuttonbackground"
+            android:button="@android:color/transparent"
             android:text="RadioButton" />
 
         <RadioButton
             android:id="@+id/player7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:button="@drawable/yourbuttonbackground"
-            android:checked="true"
+            android:background="@drawable/yourbuttonbackground"
+            android:button="@android:color/transparent"
+            android:checked="false"
             android:text="RadioButton" />
     </RadioGroup>
 
