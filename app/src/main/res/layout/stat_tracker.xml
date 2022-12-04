@@ -6,19 +6,6 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/injury"
-        android:layout_width="111dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="4dp"
-        android:backgroundTint="#673AB7"
-        android:text="Injury"
-        app:cornerRadius="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/Start_Stop"
-        app:layout_constraintTop_toBottomOf="@+id/steal"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
         android:id="@+id/halftime"
         android:layout_width="111dp"
         android:layout_height="48dp"
@@ -49,7 +36,7 @@
         android:text="Goal"
         app:cornerRadius="0dp"
         app:layout_constraintEnd_toEndOf="@+id/halftime"
-        app:layout_constraintTop_toBottomOf="@+id/pass" />
+        app:layout_constraintTop_toBottomOf="@+id/turnover" />
 
     <Button
         android:id="@+id/turnover"
@@ -60,16 +47,6 @@
         app:cornerRadius="0dp"
         app:layout_constraintEnd_toEndOf="@+id/halftime"
         app:layout_constraintTop_toBottomOf="@+id/timeout" />
-
-    <Button
-        android:id="@+id/pass"
-        android:layout_width="111dp"
-        android:layout_height="65dp"
-        android:backgroundTint="#4CAF50"
-        android:text="Pass"
-        app:cornerRadius="0dp"
-        app:layout_constraintEnd_toEndOf="@+id/halftime"
-        app:layout_constraintTop_toBottomOf="@+id/turnover" />
 
     <Button
         android:id="@+id/steal"
@@ -118,7 +95,7 @@
         android:layout_marginEnd="16dp"
         android:text="TextView"
         app:layout_constraintEnd_toStartOf="@+id/mainTimer"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/myTeamScore"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -127,6 +104,7 @@
         android:layout_width="213dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:text="TextView"
         app:layout_constraintEnd_toStartOf="@+id/Start_Stop"
         app:layout_constraintTop_toTopOf="parent" />
@@ -147,7 +125,8 @@
         android:id="@+id/myTeamScore"
         android:layout_width="84dp"
         android:layout_height="52dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
         android:text="TextView"
         app:layout_constraintEnd_toStartOf="@+id/secondaryTimer"
         app:layout_constraintTop_toBottomOf="@+id/myTeamName" />
@@ -168,8 +147,10 @@
         android:layout_width="109dp"
         android:layout_height="96dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="4dp"
         android:text="Start_Stop"
+        android:textOff="Start Game"
+        android:textOn="End Game"
         app:layout_constraintEnd_toStartOf="@+id/halftime"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -184,6 +165,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Start_Stop" />
 
     <RadioGroup
+        android:id="@+id/player_radio"
         android:layout_width="161dp"
         android:layout_height="397dp"
         android:weightSum="1"

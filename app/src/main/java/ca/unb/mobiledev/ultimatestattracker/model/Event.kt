@@ -3,11 +3,11 @@ package ca.unb.mobiledev.ultimatestattracker.model
 class Event : java.io.Serializable {
 
     var eventType: EVENT_TYPE
-    var player: Player
-    var player2: Player
-    var time: Number
+    var player: Player?
+    var player2: Player?
+    var time: String
 
-    constructor(eventType: EVENT_TYPE, player: Player, player2: Player, time: Number) {
+    constructor(eventType: EVENT_TYPE, player: Player?, player2: Player?, time: String) {
         this.eventType = eventType
         this.player = player
         this.player2 = player2
@@ -15,7 +15,7 @@ class Event : java.io.Serializable {
     }
 
     fun getFormattedName() : String {
-        return "[${player.number}]${player.fName} ${player.lName}"
+        return "[${player?.number}]${player?.fName} ${player?.lName}"
     }
 
     enum class EVENT_TYPE {
@@ -30,13 +30,13 @@ class Event : java.io.Serializable {
             EVENT_TYPE.HTStop -> "Half Time Stopped"
             EVENT_TYPE.TOStart -> "Time Out Started"
             EVENT_TYPE.TOStop -> "Time Out Stopped"
-            EVENT_TYPE.Goal -> "${player.getFormattedName()} scored a goal"
-            EVENT_TYPE.Pass -> "${player.getFormattedName()} passed to ${player2.getFormattedName()}"
-            EVENT_TYPE.Steal -> "${player.getFormattedName()} stole the disc"
+            EVENT_TYPE.Goal -> "${player?.getFormattedName()} scored a goal"
+            EVENT_TYPE.Pass -> "${player?.getFormattedName()} passed to ${player2?.getFormattedName()}"
+            EVENT_TYPE.Steal -> "${player?.getFormattedName()} stole the disc"
             EVENT_TYPE.OppGoal -> "Opponent scored a goal"
-            EVENT_TYPE.Turnover -> "${player.getFormattedName()} turned the disc over"
-            EVENT_TYPE.Foul -> "${player.getFormattedName()} committed a foul"
-            EVENT_TYPE.Injury -> "${player.getFormattedName()} was injured"
+            EVENT_TYPE.Turnover -> "${player?.getFormattedName()} turned the disc over"
+            EVENT_TYPE.Foul -> "${player?.getFormattedName()} committed a foul"
+            EVENT_TYPE.Injury -> "${player?.getFormattedName()} was injured"
             else -> "Unknown Event"
         }
     }
