@@ -1,17 +1,21 @@
 package ca.unb.mobiledev.ultimatestattracker
 
+import FragDialogSetLine
+import android.app.AlertDialog
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.PersistableBundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
 import ca.unb.mobiledev.ultimatestattracker.model.Event
 import ca.unb.mobiledev.ultimatestattracker.model.Game
 import ca.unb.mobiledev.ultimatestattracker.model.Player
 import org.w3c.dom.Text
+import java.util.ArrayList
 
-class StatTracker : AppCompatActivity() {
+class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
     var activePlayer : Player? = null
     var previousPlayer : Player? = null
     var timeoutVal = 0
@@ -34,6 +38,9 @@ class StatTracker : AppCompatActivity() {
         setContentView(R.layout.stat_tracker)
         //get game from intent
         game = intent.getSerializableExtra("game") as Game
+
+        showSelectLineDialog()
+
         timeoutVal = game.toLimit
         //get player list
         val timerText = findViewById<TextView>(R.id.mainTimer)
@@ -179,5 +186,16 @@ class StatTracker : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         game.save(applicationContext)
+    }
+
+    override fun onDialogPositiveClick(dialog: DialogFragment, selectedPlayers: ArrayList<Player>) {
+        Log.d("StatTracker", "Selected Players: $selectedPlayers")
+    }
+
+    private fun showSelectLineDialog() {
+        val lineupDialog = FragDialogSetLine(game.myTeam)
+        lineupDialog.isCancelable = false
+        lineupDialog.show(supportFragmentManager, "lineupDialog")
+        lineupDialog.positiveButton?.isEnabled = false
     }
 }

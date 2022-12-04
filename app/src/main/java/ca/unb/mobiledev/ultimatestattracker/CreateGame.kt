@@ -41,20 +41,35 @@ class CreateGame : AppCompatActivity(){
 
         btnStartGame.setOnClickListener {
             val selectedTeam = teams[spinnerTeam.selectedItemPosition]
-            try{
-                val oppTeam = textOppTeam.text.toString()
-                val pointCap = textPointCap.text.toString().toInt()
-                val toDuration = textTODuration.text.toString().toInt()
-                val htDuration = textHTDuration.text.toString().toInt()
-                val toPerHalf = textTOPerHalf.text.toString().toInt()
-                val game = Game(selectedTeam, oppTeam, 0, 0, pointCap, toDuration, htDuration, toPerHalf, ArrayList<Event>())
-                game.save(this)
-                val intent = Intent(this, StatTracker::class.java)
-                intent.putExtra("game", game)
-                startActivity(intent)
-                finish()
-            } catch (nfe: NumberFormatException) {
-                Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show()
+            if(selectedTeam.players.size < 7) {
+                Toast.makeText(this, "You must have atleast 7 players on your team to start a game", Toast.LENGTH_LONG).show()
+            }
+            else {
+                try {
+                    val oppTeam = textOppTeam.text.toString()
+                    val pointCap = textPointCap.text.toString().toInt()
+                    val toDuration = textTODuration.text.toString().toInt()
+                    val htDuration = textHTDuration.text.toString().toInt()
+                    val toPerHalf = textTOPerHalf.text.toString().toInt()
+                    val game = Game(
+                        selectedTeam,
+                        oppTeam,
+                        0,
+                        0,
+                        pointCap,
+                        toDuration,
+                        htDuration,
+                        toPerHalf,
+                        ArrayList<Event>()
+                    )
+                    game.save(this)
+                    val intent = Intent(this, StatTracker::class.java)
+                    intent.putExtra("game", game)
+                    startActivity(intent)
+                    finish()
+                } catch (nfe: NumberFormatException) {
+                    Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
