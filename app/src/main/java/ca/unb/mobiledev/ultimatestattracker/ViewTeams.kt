@@ -9,6 +9,7 @@ import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ca.unb.mobiledev.ultimatestattracker.adapter.TeamAdapter
+import ca.unb.mobiledev.ultimatestattracker.helper.FileUtils.getTeamsFromFileSystem
 import ca.unb.mobiledev.ultimatestattracker.helper.JsonUtils
 import ca.unb.mobiledev.ultimatestattracker.model.Team
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -48,7 +49,7 @@ class ViewTeams : AppCompatActivity() {
                 var teams : ArrayList<Team> = ArrayList()
                 val json = JsonUtils()
                 var team : Team? = null
-                teams = getTeamsFromFileSystem()
+                teams = getTeamsFromFileSystem(this)
                 // Update the UI
                 mainHandler.post {
                     adapter.setTeams(teams)
@@ -73,20 +74,23 @@ class ViewTeams : AppCompatActivity() {
         }
     }
 
-    private fun getTeamsFromFileSystem() : ArrayList<Team>{
-        val json = JsonUtils()
-        var teams : ArrayList<Team> = ArrayList()
-        val teamsDir = getDir("teams", MODE_PRIVATE)
-        for(teamDir in teamsDir.listFiles()!!) {
-            var team : Team? = null
-            val teamDirName = teamDir.name
-            for(file in teamDir.listFiles()!!) {
-                if(file.name == "$teamDirName.json") {
-                    team = json.convertJsonToObject(file.readText(), Team::class.java) as Team
-                }
-            }
-            if(team != null) teams.add(team)
-        }
-        return teams
-    }
+    /*
+    Moved to FileUtils
+     */
+//    private fun getTeamsFromFileSystem() : ArrayList<Team>{
+//        val json = JsonUtils()
+//        var teams : ArrayList<Team> = ArrayList()
+//        val teamsDir = getDir("teams", MODE_PRIVATE)
+//        for(teamDir in teamsDir.listFiles()!!) {
+//            var team : Team? = null
+//            val teamDirName = teamDir.name
+//            for(file in teamDir.listFiles()!!) {
+//                if(file.name == "$teamDirName.json") {
+//                    team = json.convertJsonToObject(file.readText(), Team::class.java) as Team
+//                }
+//            }
+//            if(team != null) teams.add(team)
+//        }
+//        return teams
+//    }
 }
