@@ -8,6 +8,7 @@ import android.os.PersistableBundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.children
 import androidx.fragment.app.DialogFragment
 import ca.unb.mobiledev.ultimatestattracker.model.Event
 import ca.unb.mobiledev.ultimatestattracker.model.Game
@@ -58,6 +59,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
         val turnButton = findViewById<Button>(R.id.turnover)
         val stealButton = findViewById<Button>(R.id.steal)
         val foulButton = findViewById<Button>(R.id.foul)
+        val injuryButton = findViewById<Button>(R.id.injury)
 
         timerText.text = "90:00"
         timerButton.isEnabled = true
@@ -126,6 +128,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
                 foulButton.isEnabled = true
                 goalButton.isEnabled = true
                 stealButton.isEnabled = true
+                injuryButton.isEnabled = true
             }
             else{
                 timer.cancel()
@@ -141,6 +144,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
                 foulButton.isEnabled = false
                 goalButton.isEnabled = false
                 stealButton.isEnabled = false
+                injuryButton.isEnabled = false
                 game.save(applicationContext)
                 finish()
             }
@@ -300,6 +304,12 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
             setIsEnabled(playerRadio, true)
             fouled = true
         }
+        injuryButton.setOnClickListener{
+            val injEvent = Event(Event.EVENT_TYPE.Injury, null, null, timerText.text.toString())
+            game.addEvent(injEvent)
+            showSelectLineDialog()
+        }
+
     }
 
     override fun onDestroy() {

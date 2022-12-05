@@ -6,6 +6,31 @@
     android:layout_height="match_parent">
 
     <Button
+        android:id="@+id/injury"
+        android:layout_width="111dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:backgroundTint="@color/purpleDark"
+        android:enabled="false"
+        android:text="Injury"
+        app:cornerRadius="0dp"
+        app:layout_constraintStart_toEndOf="@+id/steal2"
+        app:layout_constraintTop_toBottomOf="@+id/goal" />
+
+    <Button
+        android:id="@+id/steal2"
+        android:layout_width="111dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="1dp"
+        android:backgroundTint="#4CAF50"
+        android:enabled="false"
+        android:text="Steal"
+        app:cornerRadius="0dp"
+        app:layout_constraintStart_toStartOf="@+id/Start_Stop"
+        app:layout_constraintTop_toBottomOf="@+id/foul" />
+
+    <Button
         android:id="@+id/halftime"
         android:layout_width="111dp"
         android:layout_height="48dp"
