@@ -77,7 +77,9 @@ class FragTeamStats : Fragment() {
                         playerStats?.passes = playerStats?.passes?.plus(1) ?: 0
                         Log.d("FragTeamStats", "Player ${player?.getFormattedName()} has ${playerStats?.passes} passes")
                     }
-                    Event.EVENT_TYPE.Steal -> break
+                    Event.EVENT_TYPE.Steal -> {
+                        break
+                    }
                     Event.EVENT_TYPE.OppGoal -> break
                     Event.EVENT_TYPE.Turnover -> break
                     Event.EVENT_TYPE.Foul -> break
