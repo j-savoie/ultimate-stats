@@ -81,9 +81,11 @@
         android:id="@+id/otherTeamName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="44dp"
+        android:fontFamily="@font/orbitron_bold"
         android:text="TextView"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/otherTeamScore"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -93,7 +95,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/orbitron_bold"
         android:text="TextView"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/mainTimer"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/myTeamScore"
@@ -101,25 +105,32 @@
 
     <TextView
         android:id="@+id/mainTimer"
-        android:layout_width="213dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="137dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="92dp"
+        android:fontFamily="@font/orbitron_bold"
         android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/Start_Stop"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/secondaryTimer"
-        android:layout_width="144dp"
-        android:layout_height="43dp"
+        android:layout_width="101dp"
+        android:layout_height="33dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="20dp"
+        android:fontFamily="@font/orbitron_bold"
         android:text="TextView"
+        android:textColor="#2E2A2A"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/playLogs"
+        app:layout_constraintEnd_toEndOf="@+id/mainTimer"
         app:layout_constraintStart_toStartOf="@+id/mainTimer"
         app:layout_constraintTop_toBottomOf="@+id/mainTimer"
-        app:layout_constraintVertical_bias="0.375" />
+        app:layout_constraintVertical_bias="0.428" />
 
     <TextView
         android:id="@+id/myTeamScore"
@@ -127,7 +138,10 @@
         android:layout_height="52dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/orbitron_bold"
         android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/secondaryTimer"
         app:layout_constraintTop_toBottomOf="@+id/myTeamName" />
 
@@ -136,7 +150,10 @@
         android:layout_width="84dp"
         android:layout_height="52dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/orbitron_bold"
         android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/Start_Stop"
         app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toEndOf="@+id/mainTimer"
