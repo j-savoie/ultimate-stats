@@ -14,7 +14,7 @@ import ca.unb.mobiledev.ultimatestattracker.model.Game
 import ca.unb.mobiledev.ultimatestattracker.model.Player
 import org.w3c.dom.Text
 import java.util.ArrayList
-
+//TODO:JACOB,FIX:::::: DISABLE BUTTONS BASED ON OFFENSE/DEFENCE
 class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
     var activePlayer : Player? = null
     var previousPlayer : Player? = null
@@ -46,7 +46,23 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
         timeoutVal = game.toLimit
         //get player list
         val timerText = findViewById<TextView>(R.id.mainTimer)
+        val myteam =  findViewById<TextView>(R.id.myTeamName)
+        val opTeam =  findViewById<TextView>(R.id.otherTeamName)
+        var playerRadio = findViewById<RadioGroup>(R.id.player_radio)
+        val myTeamScoreView = findViewById<TextView>(R.id.myTeamScore)
+        val opTeamScoreView = findViewById<TextView>(R.id.otherTeamScore)
+        var timerButton = findViewById<ToggleButton>(R.id.Start_Stop)
+        var halftimeButton = findViewById<Button>(R.id.halftime)
+        var timeoutButton = findViewById<Button>(R.id.timeout)
+        val secondaryTimerText = findViewById<TextView>(R.id.secondaryTimer)
+        val goalButton = findViewById<Button>(R.id.goal)
+        val opGoal = findViewById<Button>(R.id.opGoal)
+        val turnButton = findViewById<Button>(R.id.turnover)
+        val stealButton = findViewById<Button>(R.id.steal)
+        val foulButton = findViewById<Button>(R.id.foul)
+
         timerText.text = "90:00"
+        timerButton.isEnabled = true
         var timer = object: CountDownTimer(5400000, 1000){
             override fun onTick(millisUntilFinished: Long) {
                 var minutes = millisUntilFinished/60000
@@ -63,7 +79,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
                 timerText.text = "time expired"
             }
         }
-        var playerRadio = findViewById<RadioGroup>(R.id.player_radio)
+
         //on change create pass event and set active player
         playerRadio.setOnCheckedChangeListener{ _, checkId ->
             previousPlayer = activePlayer
@@ -71,8 +87,14 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
             if(stolen){
                 var stealEvent = Event(Event.EVENT_TYPE.Steal, activePlayer, null, timerText.text.toString())
                 game.addEvent(stealEvent)
-                Log.d("StatTracker", "created steal event: $stealEvent")
                 stolen = false
+            }
+            if(fouled){
+                var foulEvent = Event(Event.EVENT_TYPE.Foul, activePlayer, null, timerText.text.toString())
+                game.addEvent(foulEvent)
+                fouled = false
+                playerRadio.clearCheck()
+                setIsEnabled(playerRadio, false)
             }
             else {
                 if(previousPlayer != null && activePlayer != null) {
@@ -83,41 +105,46 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
             }
         }
         //set text view for team names
-        val myteam =  findViewById<TextView>(R.id.myTeamName)
-        val opTeam =  findViewById<TextView>(R.id.otherTeamName)
         myteam.setText(game.myTeam.teamName)
         opTeam.setText(game.oppTeamName)
         //set scores for start of game
-        val myTeamScoreView = findViewById<TextView>(R.id.myTeamScore)
-        val opTeamScoreView = findViewById<TextView>(R.id.otherTeamScore)
         myTeamScoreView.text = "" +game.myTeamScore
         opTeamScoreView.text = "" + game.oppTeamScore
         //Start and end game button
-        var timerButton = findViewById<ToggleButton>(R.id.Start_Stop)
         timerButton.setOnCheckedChangeListener{ _, isChecked ->
             if(isChecked) {
                 timer.start()
-                val startGameEvent = Event(Event.EVENT_TYPE.Start, null, null, timerText.text.toString())
-                game.addEvent(startGameEvent)
+                setIsEnabled(playerRadio, true)
+                halftimeButton.isEnabled = true
+                timeoutButton.isEnabled = true
+                opGoal.isEnabled = true
+                turnButton.isEnabled = true
+                foulButton.isEnabled = true
+                goalButton.isEnabled = true
+                stealButton.isEnabled = true
             }
             else{
                 timer.cancel()
-                val stopGameEvent = Event(Event.EVENT_TYPE.Stop, null, null, timerText.text.toString())
-                game.addEvent(stopGameEvent)
-                // Show confirm end popup
-                finish()
+                timerButton.text = "Game Over"
+                timerButton.isEnabled = false
+                setIsEnabled(playerRadio, false)
+                halftimeButton.isEnabled = false
+                timeoutButton.isEnabled = false
+                opGoal.isEnabled = false
+                turnButton.isEnabled = false
+                foulButton.isEnabled = false
+                goalButton.isEnabled = false
+                stealButton.isEnabled = false
+                game.save(applicationContext)
+
             }
         }
 
         //halftime Button
-        var halftimeButton = findViewById<Button>(R.id.halftime)
-        var timeoutButton = findViewById<Button>(R.id.timeout)
-        val secondaryTimerText = findViewById<TextView>(R.id.secondaryTimer)
         secondaryTimerText.text = "0:00"
         halftimeButton.setOnClickListener{
             var htEvent = Event(Event.EVENT_TYPE.HTStart, null,null, timerText.text.toString())
             game.addEvent(htEvent)
-            Log.d("StatTracker", "created halftime event: $htEvent")
             halftimeButton.isEnabled = false
             timeoutButton.isEnabled = false
             var htTimer = object: CountDownTimer((game.htMins*60000).toLong(), 1000){
@@ -145,8 +172,14 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
                     timeoutButton.isEnabled = true
                     var htendEvent = Event(Event.EVENT_TYPE.HTStop, null,null, timerText.text.toString())
                     game.addEvent(htendEvent)
-                    Log.d("StatTracker", "created halftime end event: $htendEvent")
                     showSelectLineDialog()
+                    setIsEnabled(playerRadio, true)
+                    goalButton.isEnabled = true
+                    stealButton.isEnabled = true
+                    turnButton.isEnabled = true
+                    timeoutButton.isEnabled = true
+                    foulButton.isEnabled = true
+                    opGoal.isEnabled = true
                 }
             }
             htTimer.start()
@@ -155,7 +188,6 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
         timeoutButton.setOnClickListener{
             var toEvent = Event(Event.EVENT_TYPE.TOStart, null,null, timerText.text.toString())
             game.addEvent(toEvent)
-            Log.d("StatTracker", "created timeout event: $toEvent")
             halftimeButton.isEnabled = false
             timeoutButton.isEnabled = false
             var toTimer = object: CountDownTimer((game.toMins*60000).toLong(), 1000){
@@ -181,49 +213,84 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
                     }
                     var toendEvent = Event(Event.EVENT_TYPE.TOStop, null,null, timerText.text.toString())
                     game.addEvent(toendEvent)
-                    Log.d("StatTracker", "created timeout end event: $toendEvent")
+
                 }
             }
             toTimer.start()
         }
 
-        val goalButton = findViewById<Button>(R.id.goal)
+
         goalButton.setOnClickListener{
             var goalEvent = Event(Event.EVENT_TYPE.Goal, activePlayer, previousPlayer,  timerText.text.toString())
             game.addEvent(goalEvent)
-            Log.d("StatTracker", "created goal event: $goalEvent")
             game.myTeamScore += 1
             playerRadio.clearCheck()
             setIsEnabled(playerRadio, false)
             myTeamScoreView.text = "" + game.myTeamScore
-            showSelectLineDialog()
+            goalButton.isEnabled = false
+            stealButton.isEnabled = true
+            timeoutButton.isEnabled = false
+            foulButton.isEnabled = true
+            opGoal.isEnabled = true
+            turnButton.isEnabled = false
+            if(game.myTeamScore == game.scoreLimit){
+                timerButton.performClick()
+            }
+            else{
+                showSelectLineDialog()
+            }
+
         }
 
-        val opGoal = findViewById<Button>(R.id.opGoal)
         opGoal.setOnClickListener{
             var goalEvent  = Event(Event.EVENT_TYPE.OppGoal, null, null, timerText.text.toString())
             game.addEvent(goalEvent)
-            Log.d("StatTracker", "created opp goal event: $goalEvent")
             game.oppTeamScore += 1
             setIsEnabled(playerRadio, true)
+            goalButton.isEnabled = true
+            stealButton.isEnabled = false
+            turnButton.isEnabled = true
+            timeoutButton.isEnabled = true
+            foulButton.isEnabled = false
+            opGoal.isEnabled = false
             opTeamScoreView.text = "" + game.oppTeamScore
             setPlayerNull()
-            showSelectLineDialog()
+            if(game.oppTeamScore == game.scoreLimit){
+                timerButton.performClick()
+            }
+            else{
+                showSelectLineDialog()
+            }
         }
-        val turnButton = findViewById<Button>(R.id.turnover)
+
         turnButton.setOnClickListener{
             var turnEvent = Event(Event.EVENT_TYPE.Turnover, activePlayer, previousPlayer, timerText.text.toString())
             game.addEvent(turnEvent)
-            Log.d("StatTracker", "created turnover event: $turnEvent")
             playerRadio.clearCheck()
             setIsEnabled(playerRadio, false)
+            goalButton.isEnabled = false
+            timeoutButton.isEnabled = false
+            turnButton.isEnabled = false
+            foulButton.isEnabled = true
+            stealButton.isEnabled = true
+            opGoal.isEnabled = true
             setPlayerNull()
         }
-        val stealButton = findViewById<Button>(R.id.steal)
         stealButton.setOnClickListener{
             setIsEnabled(playerRadio, true)
+            goalButton.isEnabled = true
+            timeoutButton.isEnabled = true
+            foulButton.isEnabled = false
+            turnButton.isEnabled = true
+            stealButton.isEnabled = false
+            opGoal.isEnabled = false
             stolen = true
 
+        }
+
+        foulButton.setOnClickListener{
+            setIsEnabled(playerRadio, true)
+            fouled = true
         }
     }
 
