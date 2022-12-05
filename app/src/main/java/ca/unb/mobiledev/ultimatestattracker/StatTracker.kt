@@ -235,8 +235,13 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
             foulButton.isEnabled = true
             opGoal.isEnabled = true
             turnButton.isEnabled = false
+            if(game.myTeamScore == game.scoreLimit){
+                timerButton.performClick()
+            }
+            else{
+                showSelectLineDialog()
+            }
 
-            showSelectLineDialog()
         }
 
         opGoal.setOnClickListener{
@@ -252,7 +257,12 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
             opGoal.isEnabled = false
             opTeamScoreView.text = "" + game.oppTeamScore
             setPlayerNull()
-            showSelectLineDialog()
+            if(game.oppTeamScore == game.scoreLimit){
+                timerButton.performClick()
+            }
+            else{
+                showSelectLineDialog()
+            }
         }
 
         turnButton.setOnClickListener{
