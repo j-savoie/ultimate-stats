@@ -40,9 +40,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
         setContentView(R.layout.stat_tracker)
         //get game from intent
         game = intent.getSerializableExtra("game") as Game
-
         showSelectLineDialog()
-
         timeoutVal = game.toLimit
         //get player list
         val timerText = findViewById<TextView>(R.id.mainTimer)
@@ -77,6 +75,8 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
 
             override fun onFinish() {
                 timerText.text = "time expired"
+                game.save(applicationContext)
+                finish()
             }
         }
 
@@ -94,11 +94,13 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
                 game.addEvent(foulEvent)
                 fouled = false
                 playerRadio.clearCheck()
+                setPlayerNull()
                 setIsEnabled(playerRadio, false)
             }
             else {
                 if(previousPlayer != null && activePlayer != null) {
                     var passEvent = Event(Event.EVENT_TYPE.Pass, previousPlayer, activePlayer, timerText.text.toString())
+                    Log.d("Pass Event", passEvent.toString())
                     game.addEvent(passEvent)
                     Log.d("StatTracker", "created pass event: $passEvent")
                 }
@@ -114,6 +116,8 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
         timerButton.setOnCheckedChangeListener{ _, isChecked ->
             if(isChecked) {
                 timer.start()
+                var startEvent =  Event(Event.EVENT_TYPE.Start, null, null, timerText.text.toString())
+                game.addEvent(startEvent)
                 setIsEnabled(playerRadio, true)
                 halftimeButton.isEnabled = true
                 timeoutButton.isEnabled = true
@@ -125,6 +129,8 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
             }
             else{
                 timer.cancel()
+                var endEvent =  Event(Event.EVENT_TYPE.Stop, null, null, timerText.text.toString())
+                game.addEvent(endEvent)
                 timerButton.text = "Game Over"
                 timerButton.isEnabled = false
                 setIsEnabled(playerRadio, false)
@@ -136,7 +142,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
                 goalButton.isEnabled = false
                 stealButton.isEnabled = false
                 game.save(applicationContext)
-
+                finish()
             }
         }
 
@@ -225,6 +231,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
             game.addEvent(goalEvent)
             game.myTeamScore += 1
             playerRadio.clearCheck()
+            setPlayerNull()
             setIsEnabled(playerRadio, false)
             myTeamScoreView.text = "" + game.myTeamScore
             goalButton.isEnabled = false
@@ -264,8 +271,9 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
         }
 
         turnButton.setOnClickListener{
-            var turnEvent = Event(Event.EVENT_TYPE.Turnover, activePlayer, previousPlayer, timerText.text.toString())
+            var turnEvent = Event(Event.EVENT_TYPE.Turnover, activePlayer, null, timerText.text.toString())
             game.addEvent(turnEvent)
+            setPlayerNull()
             playerRadio.clearCheck()
             setIsEnabled(playerRadio, false)
             goalButton.isEnabled = false
@@ -274,7 +282,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
             foulButton.isEnabled = true
             stealButton.isEnabled = true
             opGoal.isEnabled = true
-            setPlayerNull()
+
         }
         stealButton.setOnClickListener{
             setIsEnabled(playerRadio, true)
