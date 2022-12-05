@@ -2,6 +2,7 @@ package ca.unb.mobiledev.ultimatestattracker.model
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import android.widget.Toast
 import ca.unb.mobiledev.ultimatestattracker.helper.FileUtils.getTeamDir
 import ca.unb.mobiledev.ultimatestattracker.helper.FileUtils.toFileName
 import ca.unb.mobiledev.ultimatestattracker.helper.JsonUtils
@@ -16,8 +17,15 @@ class Team : java.io.Serializable {
         this.players = players
     }
 
-    fun addPlayer(player: Player) {
+    fun addPlayer(player: Player, c: Context) : Boolean {
+        for(p in players){
+            if(p.number == player.number){
+                Toast.makeText(c, "Player with that number already exists", Toast.LENGTH_SHORT).show()
+                return false
+            }
+        }
         this.players.add(player)
+        return true
     }
 
     fun removePlayer(player: Player) {

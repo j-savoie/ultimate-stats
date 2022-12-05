@@ -71,16 +71,15 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
             if(stolen){
                 var stealEvent = Event(Event.EVENT_TYPE.Steal, activePlayer, null, timerText.text.toString())
                 game.addEvent(stealEvent)
+                Log.d("StatTracker", "created steal event: $stealEvent")
                 stolen = false
             }
             else {
-                var passEvent = Event(
-                    Event.EVENT_TYPE.Pass,
-                    activePlayer,
-                    previousPlayer,
-                    timerText.text.toString()
-                )
-                game.addEvent(passEvent)
+                if(previousPlayer != null && activePlayer != null) {
+                    var passEvent = Event(Event.EVENT_TYPE.Pass, previousPlayer, activePlayer, timerText.text.toString())
+                    game.addEvent(passEvent)
+                    Log.d("StatTracker", "created pass event: $passEvent")
+                }
             }
         }
         //set text view for team names
@@ -98,10 +97,15 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
         timerButton.setOnCheckedChangeListener{ _, isChecked ->
             if(isChecked) {
                 timer.start()
+                val startGameEvent = Event(Event.EVENT_TYPE.Start, null, null, timerText.text.toString())
+                game.addEvent(startGameEvent)
             }
             else{
                 timer.cancel()
-                game.save(applicationContext)
+                val stopGameEvent = Event(Event.EVENT_TYPE.Stop, null, null, timerText.text.toString())
+                game.addEvent(stopGameEvent)
+                // Show confirm end popup
+                finish()
             }
         }
 
@@ -113,6 +117,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
         halftimeButton.setOnClickListener{
             var htEvent = Event(Event.EVENT_TYPE.HTStart, null,null, timerText.text.toString())
             game.addEvent(htEvent)
+            Log.d("StatTracker", "created halftime event: $htEvent")
             halftimeButton.isEnabled = false
             timeoutButton.isEnabled = false
             var htTimer = object: CountDownTimer((game.htMins*60000).toLong(), 1000){
@@ -140,6 +145,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
                     timeoutButton.isEnabled = true
                     var htendEvent = Event(Event.EVENT_TYPE.HTStop, null,null, timerText.text.toString())
                     game.addEvent(htendEvent)
+                    Log.d("StatTracker", "created halftime end event: $htendEvent")
                     showSelectLineDialog()
                 }
             }
@@ -149,6 +155,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
         timeoutButton.setOnClickListener{
             var toEvent = Event(Event.EVENT_TYPE.TOStart, null,null, timerText.text.toString())
             game.addEvent(toEvent)
+            Log.d("StatTracker", "created timeout event: $toEvent")
             halftimeButton.isEnabled = false
             timeoutButton.isEnabled = false
             var toTimer = object: CountDownTimer((game.toMins*60000).toLong(), 1000){
@@ -174,7 +181,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
                     }
                     var toendEvent = Event(Event.EVENT_TYPE.TOStop, null,null, timerText.text.toString())
                     game.addEvent(toendEvent)
-
+                    Log.d("StatTracker", "created timeout end event: $toendEvent")
                 }
             }
             toTimer.start()
@@ -184,6 +191,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
         goalButton.setOnClickListener{
             var goalEvent = Event(Event.EVENT_TYPE.Goal, activePlayer, previousPlayer,  timerText.text.toString())
             game.addEvent(goalEvent)
+            Log.d("StatTracker", "created goal event: $goalEvent")
             game.myTeamScore += 1
             playerRadio.clearCheck()
             setIsEnabled(playerRadio, false)
@@ -195,6 +203,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
         opGoal.setOnClickListener{
             var goalEvent  = Event(Event.EVENT_TYPE.OppGoal, null, null, timerText.text.toString())
             game.addEvent(goalEvent)
+            Log.d("StatTracker", "created opp goal event: $goalEvent")
             game.oppTeamScore += 1
             setIsEnabled(playerRadio, true)
             opTeamScoreView.text = "" + game.oppTeamScore
@@ -205,6 +214,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
         turnButton.setOnClickListener{
             var turnEvent = Event(Event.EVENT_TYPE.Turnover, activePlayer, previousPlayer, timerText.text.toString())
             game.addEvent(turnEvent)
+            Log.d("StatTracker", "created turnover event: $turnEvent")
             playerRadio.clearCheck()
             setIsEnabled(playerRadio, false)
             setPlayerNull()

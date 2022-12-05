@@ -7,7 +7,7 @@ class Player : java.io.Serializable {
 
     var fName: String
     var lName: String
-    var number: Number
+    var number: Int
     var gender: GENDER
 
     constructor(fName: String, lName: String, number: Int, gender: GENDER){

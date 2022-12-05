@@ -2,6 +2,7 @@ package ca.unb.mobiledev.ultimatestattracker.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,6 +38,7 @@ class FragTeamGames : Fragment() {
             games = it.getSerializable("games") as ArrayList<Game>
             team = it.getSerializable("team") as Team
         }
+        Log.d("FragTeamGames", "games: $games")
     }
 
     override fun onCreateView(
@@ -54,8 +56,8 @@ class FragTeamGames : Fragment() {
         adapter.setGames(games)
         recyclerView.adapter = adapter
 
-        val newGame = binding.btnNewGame
-        newGame.setOnClickListener{
+        val btnNewGame = binding.btnNewGame
+        btnNewGame.setOnClickListener{
             val intent = Intent(activity, CreateGame::class.java )
             intent.putExtra("team", team)
             startActivity(intent)

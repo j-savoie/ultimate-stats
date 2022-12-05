@@ -40,8 +40,8 @@ class AddPlayers : AppCompatActivity() {
                 "Other" -> gender = Player.GENDER.Other
             }
             val player = Player(fname,lname,number, gender)
-            team.addPlayer(player)
-            Toast.makeText(this, "Player Added: $fname $lname", Toast.LENGTH_SHORT).show()
+            val pAdded = team.addPlayer(player, this)
+            if(pAdded) Toast.makeText(this, "Player Added: $fname $lname", Toast.LENGTH_SHORT).show()
             fNameField.setText("")
             lnameField.setText("")
             numberField.setText("")

@@ -16,6 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UltimateStatTracker"
         tools:targetApi="31" >
+        <provider
+            android:authorities="ca.unb.mobiledev.ultimatestattracker.fileprovider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
         <activity
             android:name=".CreateGame"
             android:exported="false"
