@@ -37,7 +37,6 @@ class PlayerAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.d("PlayerAdapter", "Binding View $position.")
         val item = dataset.players[position]
         holder.textNumber.text = item.number.toString()
         holder.textName.text = "${item.fName} ${item.lName}"

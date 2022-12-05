@@ -64,13 +64,14 @@ class GameAdapter(
                     break
                 }
             }
-            dataset = dataset.filter { it.createdAt != item.createdAt } as ArrayList<Game> //TODO?
+            dataset = dataset.filter { it.createdAt != item.createdAt } as ArrayList<Game>
             notifyDataSetChanged()
         }
     }
 
     fun setGames(games: ArrayList<Game>) {
         dataset = games
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {

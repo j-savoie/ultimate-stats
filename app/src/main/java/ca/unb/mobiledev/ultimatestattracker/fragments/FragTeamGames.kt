@@ -65,4 +65,11 @@ class FragTeamGames : Fragment() {
 
         return view
     }
+
+    override fun onResume() {
+        super.onResume()
+        games = getGamesFromFileSystem(team.teamName, activity)
+        adapter.setGames(games)
+        adapter.notifyDataSetChanged()
+    }
 }

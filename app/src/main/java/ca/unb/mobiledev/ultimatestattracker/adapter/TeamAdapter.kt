@@ -48,7 +48,6 @@ class TeamAdapter(
         }
         holder.btnDelete.setOnClickListener {
             val dir = getTeamDir(item.teamName, parentActivity)
-            Log.d("TeamAdapter", "Deleting team ${item.teamName} at ${dir.absolutePath}")
             dir.deleteRecursively()
             dataset = dataset.filter { it.teamName != item.teamName } as ArrayList<Team>
             notifyDataSetChanged()
@@ -57,6 +56,7 @@ class TeamAdapter(
 
     fun setTeams(teams: ArrayList<Team>) {
         dataset = teams
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
