@@ -12,6 +12,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
         android:backgroundTint="#FBC02D"
+        android:enabled="false"
         android:text="Halftime"
         app:cornerRadius="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,6 +23,7 @@
         android:layout_width="111dp"
         android:layout_height="48dp"
         android:backgroundTint="#FBC02D"
+        android:enabled="false"
         android:text="Timeout"
         app:cornerRadius="0dp"
         app:layout_constraintEnd_toEndOf="@+id/halftime"
@@ -33,6 +35,7 @@
         android:layout_height="65dp"
         android:layout_marginEnd="1dp"
         android:backgroundTint="#4CAF50"
+        android:enabled="false"
         android:text="Goal"
         app:cornerRadius="0dp"
         app:layout_constraintEnd_toEndOf="@+id/halftime"
@@ -43,6 +46,7 @@
         android:layout_width="111dp"
         android:layout_height="65dp"
         android:backgroundTint="#E61919"
+        android:enabled="false"
         android:text="Turnover"
         app:cornerRadius="0dp"
         app:layout_constraintEnd_toEndOf="@+id/halftime"
@@ -54,6 +58,7 @@
         android:layout_height="65dp"
         android:layout_marginTop="1dp"
         android:backgroundTint="#4CAF50"
+        android:enabled="false"
         android:text="Steal"
         app:cornerRadius="0dp"
         app:layout_constraintStart_toStartOf="@+id/Start_Stop"
@@ -64,6 +69,7 @@
         android:layout_width="111dp"
         android:layout_height="65dp"
         android:backgroundTint="#E61919"
+        android:enabled="false"
         android:text="Foul"
         app:cornerRadius="0dp"
         app:layout_constraintStart_toStartOf="@+id/Start_Stop"
@@ -165,6 +171,7 @@
         android:layout_height="96dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
+        android:enabled="false"
         android:text="Start_Stop"
         android:textOff="Start Game"
         android:textOn="End Game"
@@ -176,6 +183,7 @@
         android:layout_width="111dp"
         android:layout_height="65dp"
         android:backgroundTint="#E61919"
+        android:enabled="false"
         android:text="Oponent Goal"
         app:cornerRadius="0dp"
         app:layout_constraintStart_toStartOf="@+id/Start_Stop"
@@ -186,7 +194,7 @@
         android:layout_width="161dp"
         android:layout_height="397dp"
         android:weightSum="1"
-        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteX="5dp"
         tools:layout_editor_absoluteY="7dp">
 
         <RadioButton
@@ -196,7 +204,8 @@
             android:background="@drawable/yourbuttonbackground"
             android:button="@android:color/transparent"
             android:checked="false"
-            android:text="RadioButton" />
+            android:enabled="false"
+            android:text="No Player Added" />
 
         <RadioButton
             android:id="@+id/player2"
@@ -204,7 +213,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/yourbuttonbackground"
             android:button="@android:color/transparent"
-            android:text="RadioButton" />
+            android:enabled="false"
+            android:text="No Player Added" />
 
         <RadioButton
             android:id="@+id/player3"
@@ -212,8 +222,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/yourbuttonbackground"
             android:button="@android:color/transparent"
-            android:checked="true"
-            android:text="RadioButton" />
+            android:checked="false"
+            android:enabled="false"
+            android:text="No Player Added" />
 
         <RadioButton
             android:id="@+id/player4"
@@ -221,8 +232,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/yourbuttonbackground"
             android:button="@android:color/transparent"
-            android:checked="true"
-            android:text="RadioButton" />
+            android:checked="false"
+            android:enabled="false"
+            android:text="No Player Added" />
 
         <RadioButton
             android:id="@+id/player5"
@@ -230,7 +242,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/yourbuttonbackground"
             android:button="@android:color/transparent"
-            android:text="RadioButton" />
+            android:enabled="false"
+            android:text="No Player Added" />
 
         <RadioButton
             android:id="@+id/player6"
@@ -238,7 +251,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/yourbuttonbackground"
             android:button="@android:color/transparent"
-            android:text="RadioButton" />
+            android:enabled="false"
+            android:text="No Player Added" />
 
         <RadioButton
             android:id="@+id/player7"
@@ -247,7 +261,8 @@
             android:background="@drawable/yourbuttonbackground"
             android:button="@android:color/transparent"
             android:checked="false"
-            android:text="RadioButton" />
+            android:enabled="false"
+            android:text="No Player Added" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
