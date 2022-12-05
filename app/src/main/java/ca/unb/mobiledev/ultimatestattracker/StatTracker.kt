@@ -275,18 +275,20 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
         }
 
         turnButton.setOnClickListener{
-            var turnEvent = Event(Event.EVENT_TYPE.Turnover, activePlayer, null, timerText.text.toString())
-            game.addEvent(turnEvent)
-            setPlayerNull()
-            playerRadio.clearCheck()
-            setIsEnabled(playerRadio, false)
-            goalButton.isEnabled = false
-            timeoutButton.isEnabled = false
-            turnButton.isEnabled = false
-            foulButton.isEnabled = true
-            stealButton.isEnabled = true
-            opGoal.isEnabled = true
-
+            if(activePlayer != null) {
+                var turnEvent =
+                    Event(Event.EVENT_TYPE.Turnover, activePlayer, null, timerText.text.toString())
+                game.addEvent(turnEvent)
+                setPlayerNull()
+                playerRadio.clearCheck()
+                setIsEnabled(playerRadio, false)
+                goalButton.isEnabled = false
+                timeoutButton.isEnabled = false
+                turnButton.isEnabled = false
+                foulButton.isEnabled = true
+                stealButton.isEnabled = true
+                opGoal.isEnabled = true
+            }
         }
         stealButton.setOnClickListener{
             setIsEnabled(playerRadio, true)
