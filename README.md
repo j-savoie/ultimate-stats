@@ -1,4 +1,8 @@
-This is  a frisbee stat tracking application for ultimate coaches, players and fans.
+This is an ultimate frisbee stat tracking application for ultimate coaches, players and fans. This android application was created for CS2063 offered at UNB.
+
+##Supported API Levels
+Minimum API Level: 26
+Target API Level: 33
 
 ## Features
 Create Team
