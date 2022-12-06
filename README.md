@@ -2,13 +2,21 @@ This is  a frisbee stat tracking application for ultimate coaches, players and f
 
 #### Features
 Create Team
+
   View Teams
+  
   View Team
+  
   View Players
+
 View Games
+
 View Stats
+
 Add Players
+
 Create Game
+
 Track Game Statistics
 
 #### Known Issues
