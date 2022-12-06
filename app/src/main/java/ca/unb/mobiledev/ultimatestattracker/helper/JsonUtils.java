@@ -11,7 +11,6 @@ public class JsonUtils {
         try {
             Gson gson = new Gson();
             String str = gson.toJson(obj);
-            Log.i("JsonUtils", "== Json String ==\n"+str);
             return str;
         } catch (Exception e){
             System.err.println("Failed to convert Object to JSON");
@@ -23,7 +22,6 @@ public class JsonUtils {
         try{
             Gson gson = new Gson();
             Object obj = gson.fromJson(str, type);
-            Log.i("JsonUtils", "== Java Obj ==\n"+obj);
             return obj;
         } catch (Exception e){
             System.err.println("Failed to get Object from JSON");

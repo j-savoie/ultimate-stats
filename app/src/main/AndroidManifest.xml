@@ -51,9 +51,7 @@
         </activity>
         <activity android:name=".ViewTeam" >
         </activity>
-        <activity
-            android:name=".StatTracker"
-            android:screenOrientation="landscape" >
+        <activity android:name=".StatTracker" >
         </activity>
 
         <meta-data

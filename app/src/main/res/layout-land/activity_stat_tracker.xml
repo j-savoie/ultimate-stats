@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StatTracker">
+
+    <RadioGroup
+        android:id="@+id/player_radio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/player1"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:background="@drawable/yourbuttonbackground"
+            android:button="@android:color/transparent"
+            android:checked="false"
+            android:enabled="false"
+            android:text="No Player Added" />
+
+        <RadioButton
+            android:id="@+id/player2"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:background="@drawable/yourbuttonbackground"
+            android:button="@android:color/transparent"
+            android:enabled="false"
+            android:text="No Player Added" />
+
+        <RadioButton
+            android:id="@+id/player3"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:background="@drawable/yourbuttonbackground"
+            android:button="@android:color/transparent"
+            android:checked="false"
+            android:enabled="false"
+            android:text="No Player Added" />
+
+        <RadioButton
+            android:id="@+id/player4"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:background="@drawable/yourbuttonbackground"
+            android:button="@android:color/transparent"
+            android:checked="false"
+            android:enabled="false"
+            android:text="No Player Added" />
+
+        <RadioButton
+            android:id="@+id/player5"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:background="@drawable/yourbuttonbackground"
+            android:button="@android:color/transparent"
+            android:enabled="false"
+            android:text="No Player Added" />
+
+        <RadioButton
+            android:id="@+id/player6"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:background="@drawable/yourbuttonbackground"
+            android:button="@android:color/transparent"
+            android:enabled="false"
+            android:text="No Player Added" />
+
+        <RadioButton
+            android:id="@+id/player7"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:background="@drawable/yourbuttonbackground"
+            android:button="@android:color/transparent"
+            android:checked="false"
+            android:enabled="false"
+            android:text="No Player Added" />
+
+    </RadioGroup>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toStartOf="@id/linearLayoutLeftEvents"
+        app:layout_constraintStart_toEndOf="@id/player_radio"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/mainTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/orbitron_bold"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/myTeamName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="@font/orbitron_bold"
+            android:textColor="@color/greyDark"
+            android:text="TextView"
+            android:textSize="20sp"
+            android:gravity="start"
+            app:layout_constraintEnd_toStartOf="@+id/secondaryTimer"
+            app:layout_constraintTop_toBottomOf="@+id/mainTimer" />
+
+        <TextView
+            android:id="@+id/otherTeamName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/orbitron_bold"
+            android:text="TextView"
+            android:textColor="@color/greyDark"
+            android:textSize="20sp"
+            android:gravity="end"
+            app:layout_constraintStart_toEndOf="@+id/secondaryTimer"
+            app:layout_constraintTop_toBottomOf="@+id/mainTimer" />
+
+        <TextView
+            android:id="@+id/secondaryTimer"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/orbitron_bold"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@color/greyDark"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainTimer" />
+
+        <TextView
+            android:id="@+id/otherTeamScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="50dp"
+            android:fontFamily="@font/orbitron_bold"
+            android:text="1"
+            android:textColor="@color/greyDark"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/otherTeamName" />
+
+        <TextView
+            android:id="@+id/myTeamScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/orbitron_bold"
+            android:text="1"
+            android:textColor="@color/greyDark"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/myTeamName" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/playLogs"
+            android:layout_width="320dp"
+            android:layout_height="231dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:fadingEdge="vertical"
+            android:requiresFadingEdge="vertical"
+            android:scrollbarStyle="insideOverlay"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/otherTeamScore" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutLeftEvents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/linearLayoutRightEvents">
+
+        <ToggleButton
+            android:id="@+id/Start_Stop"
+            android:layout_width="120dp"
+            android:layout_height="96dp"
+            android:enabled="false"
+            android:text="Start_Stop"
+            android:textOff="Start Game"
+            android:textOn="End Game" />
+
+        <Button
+            android:id="@+id/opGoal"
+            android:layout_width="120dp"
+            android:layout_height="86dp"
+            android:backgroundTint="#E61919"
+            android:enabled="false"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Oponent Goal"
+            app:backgroundTint="@color/red"
+            app:cornerRadius="0dp"
+            app:strokeColor="@color/redDark"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/turnover"
+            android:layout_width="120dp"
+            android:layout_height="86dp"
+            android:backgroundTint="#E61919"
+            android:enabled="false"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Turnover"
+            app:backgroundTint="@color/red"
+            app:cornerRadius="0dp"
+            app:strokeColor="@color/redDark"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/foul"
+            android:layout_width="120dp"
+            android:layout_height="86dp"
+            android:backgroundTint="#E61919"
+            android:enabled="false"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Foul"
+            app:backgroundTint="@color/red"
+            app:cornerRadius="0dp"
+            app:strokeColor="@color/redDark"
+            app:strokeWidth="2dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutRightEvents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/halftime"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:backgroundTint="#FBC02D"
+            android:enabled="false"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Halftime"
+            app:backgroundTint="@color/yellow"
+            app:cornerRadius="0dp"
+            app:strokeColor="@color/yellowDark"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/timeout"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:backgroundTint="#FBC02D"
+            android:enabled="false"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Timeout"
+            app:backgroundTint="@color/yellow"
+            app:cornerRadius="0dp"
+            app:strokeColor="@color/yellowDark"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/steal"
+            android:layout_width="120dp"
+            android:layout_height="86dp"
+            android:backgroundTint="#4CAF50"
+            android:enabled="false"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Steal"
+            app:backgroundTint="@color/green"
+            app:cornerRadius="0dp"
+            app:strokeColor="@color/greenDark"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/goal"
+            android:layout_width="120dp"
+            android:layout_height="86dp"
+            android:backgroundTint="#4CAF50"
+            android:enabled="false"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Goal"
+            app:backgroundTint="@color/green"
+            app:cornerRadius="0dp"
+            app:strokeColor="@color/greenDark"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/substitution"
+            android:layout_width="120dp"
+            android:layout_height="86dp"
+            android:enabled="false"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Sub"
+            app:backgroundTint="@color/purple"
+            app:cornerRadius="0dp"
+            app:strokeColor="@color/purpleDark"
+            app:strokeWidth="2dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

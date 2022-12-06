@@ -19,7 +19,7 @@ class Event : java.io.Serializable {
     }
 
     enum class EVENT_TYPE {
-        Start, Stop, HTStart, HTStop, TOStart, TOStop, Goal, Pass, Steal, OppGoal, Turnover, Foul, Injury
+        Start, Stop, HTStart, HTStop, TOStart, TOStop, Goal, Pass, Steal, OppGoal, Turnover, Foul, Substitution
     }
 
     override fun toString() : String{
@@ -36,7 +36,7 @@ class Event : java.io.Serializable {
             EVENT_TYPE.OppGoal -> "Opponent scored a goal"
             EVENT_TYPE.Turnover -> "${player?.getFormattedName()} turned the disc over"
             EVENT_TYPE.Foul -> "${player?.getFormattedName()} committed a foul"
-            EVENT_TYPE.Injury -> "${player?.getFormattedName()} was injured"
+            EVENT_TYPE.Substitution -> "Substitution"
             else -> "Unknown Event"
         }
     }

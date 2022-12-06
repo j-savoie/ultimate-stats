@@ -46,9 +46,9 @@ class EventAdapter(
         holder.textEventText.text = item.toString()
         holder.chipEventType.text = item.eventType.toString()
         when(item.eventType){
-            Event.EVENT_TYPE.Start, Event.EVENT_TYPE.Stop, Event.EVENT_TYPE.HTStart, Event.EVENT_TYPE.HTStop, Event.EVENT_TYPE.TOStart, Event.EVENT_TYPE.TOStop
+            Event.EVENT_TYPE.Start, Event.EVENT_TYPE.Stop, Event.EVENT_TYPE.HTStart, Event.EVENT_TYPE.HTStop, Event.EVENT_TYPE.TOStart, Event.EVENT_TYPE.TOStop, Event.EVENT_TYPE.Substitution
                 -> holder.chipEventType.setChipBackgroundColorResource(R.color.yellow)
-            Event.EVENT_TYPE.Goal, Event.EVENT_TYPE.Pass, Event.EVENT_TYPE.Steal, Event.EVENT_TYPE.Injury
+            Event.EVENT_TYPE.Goal, Event.EVENT_TYPE.Pass, Event.EVENT_TYPE.Steal
                 -> holder.chipEventType.setChipBackgroundColorResource(R.color.green)
             Event.EVENT_TYPE.OppGoal, Event.EVENT_TYPE.Foul, Event.EVENT_TYPE.Turnover
                 -> holder.chipEventType.setChipBackgroundColorResource(R.color.red)

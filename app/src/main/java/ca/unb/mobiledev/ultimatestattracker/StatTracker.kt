@@ -44,7 +44,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.stat_tracker)
+        setContentView(R.layout.activity_stat_tracker)
         //get game from intent
         game = intent.getSerializableExtra("game") as Game
         showSelectLineDialog()
@@ -65,7 +65,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
         val turnButton = findViewById<Button>(R.id.turnover)
         val stealButton = findViewById<Button>(R.id.steal)
         val foulButton = findViewById<Button>(R.id.foul)
-        val injuryButton = findViewById<Button>(R.id.injury)
+        val subButton = findViewById<Button>(R.id.substitution)
         recyclerView = findViewById<RecyclerView>(R.id.playLogs)
 
         adapter = EventAdapter(this, game)
@@ -74,9 +74,9 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
         adapter.setEvents(game)
         recyclerView.adapter = adapter
 
-        timerText.text = "90:00"
+        timerText.text = "00:00"
         timerButton.isEnabled = true
-        var timer = object: CountDownTimer(5400000, 1000){
+        var timer = object: CountDownTimer(60000L * game.timeLimit, 1000){
             override fun onTick(millisUntilFinished: Long) {
                 var minutes = millisUntilFinished/60000
                 var seconds =  millisUntilFinished % 60000 /1000
@@ -115,9 +115,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
             else {
                 if(previousPlayer != null && activePlayer != null) {
                     var passEvent = Event(Event.EVENT_TYPE.Pass, previousPlayer, activePlayer, timerText.text.toString())
-                    Log.d("Pass Event", passEvent.toString())
                     addEvent(passEvent)
-                    Log.d("StatTracker", "created pass event: $passEvent")
                 }
             }
         }
@@ -141,7 +139,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
                 foulButton.isEnabled = true
                 goalButton.isEnabled = true
                 stealButton.isEnabled = true
-                injuryButton.isEnabled = true
+                subButton.isEnabled = true
             }
             else{
                 timer.cancel()
@@ -157,7 +155,7 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
                 foulButton.isEnabled = false
                 goalButton.isEnabled = false
                 stealButton.isEnabled = false
-                injuryButton.isEnabled = false
+                subButton.isEnabled = false
                 game.save(applicationContext)
                 finish()
             }
@@ -247,8 +245,8 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
             var goalEvent = Event(Event.EVENT_TYPE.Goal, activePlayer, previousPlayer,  timerText.text.toString())
             addEvent(goalEvent)
             game.myTeamScore += 1
-            playerRadio.clearCheck()
             setPlayerNull()
+            playerRadio.clearCheck()
             setIsEnabled(playerRadio, false)
             myTeamScoreView.text = "" + game.myTeamScore
             goalButton.isEnabled = false
@@ -319,9 +317,9 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
             setIsEnabled(playerRadio, true)
             fouled = true
         }
-        injuryButton.setOnClickListener{
-            val injEvent = Event(Event.EVENT_TYPE.Injury, null, null, timerText.text.toString())
-            game.addEvent(injEvent)
+        subButton.setOnClickListener{
+            var subEvent = Event(Event.EVENT_TYPE.Substitution, activePlayer, null, timerText.text.toString())
+            addEvent(subEvent)
             showSelectLineDialog()
         }
 
@@ -342,7 +340,6 @@ class StatTracker : AppCompatActivity(), FragDialogSetLine.DialogListener {
     }
 
     override fun onDialogPositiveClick(dialog: DialogFragment, selectedPlayers: ArrayList<Player>) {
-        Log.d("StatTracker", "Selected Players: $selectedPlayers")
         setLine(selectedPlayers)
     }
 

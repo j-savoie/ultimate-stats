@@ -20,7 +20,6 @@ class FragDialogSetLine(val team : Team) : DialogFragment() {
         val playerArray = Array<String>(team.players.size) { i -> team.players[i].getFormattedName() }
         val selectedPlayers = ArrayList<Player>()
         var count = 0
-        Log.d("FragDialogSetLine", "playerArray: ${playerArray.contentToString()}")
 
         return activity?.let {
             // Use the Builder class for convenient dialog construction

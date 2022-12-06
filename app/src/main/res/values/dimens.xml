@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widthBtnEvent"> 120dp </string>
+    <string name="heightBtnEvent"> 96dp </string>
+
+    <string name="widthRadioButton"> 120dp </string>
+    <string name="heightRadioButton"> 50dp </string>
+</resources>

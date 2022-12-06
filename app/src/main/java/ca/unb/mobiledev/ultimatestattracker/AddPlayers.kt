@@ -47,10 +47,6 @@ class AddPlayers : AppCompatActivity() {
             numberField.setText("")
         }
         completeRoster.setOnClickListener{
-            Log.e("Team: ", team.teamName)
-            for(player in team.players){
-                Log.e("Player: ", player.fName + " " + player.lName + " (" + player.number + ")")
-            }
             team.save(this)
             val intent = Intent(this, ViewTeam::class.java)
             intent.putExtra("team", team)

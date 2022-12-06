@@ -9,10 +9,9 @@ class PlayerStats(var player: Player) {
     var turnovers = 0
     var steals = 0
     var fouls = 0
-    var injuries = 0
     // timeWithDisc?
 
     override fun toString(): String {
-        return "${player.getFormattedName()}: [$goals, $assists, $passes, $passesReceived, $turnovers, $steals, $fouls, $injuries]"
+        return "${player.getFormattedName()}: [$goals, $assists, $passes, $passesReceived, $turnovers, $steals, $fouls]"
     }
 }

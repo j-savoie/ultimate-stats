@@ -28,7 +28,6 @@ class CreateTeam : AppCompatActivity(){
             // Launch AddPlayers activity
             val teams = intent.extras?.getSerializable("teams") as ArrayList<Team>
             teams.add(team)
-            Log.d("CreateTeam", "Team added to list: $teams")
             val intent = Intent(this, ViewTeam::class.java)
             intent.putExtra("teams", teams)
             intent.putExtra("team", team)

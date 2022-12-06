@@ -2,6 +2,8 @@ package ca.unb.mobiledev.ultimatestattracker.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,6 +21,7 @@ import ca.unb.mobiledev.ultimatestattracker.databinding.FragmentTeamPlayersBindi
 import ca.unb.mobiledev.ultimatestattracker.helper.FileUtils.getGamesFromFileSystem
 import ca.unb.mobiledev.ultimatestattracker.model.Game
 import ca.unb.mobiledev.ultimatestattracker.model.Team
+import java.util.concurrent.Executors
 
 /**
  * A simple [Fragment] subclass.
@@ -38,7 +41,6 @@ class FragTeamGames : Fragment() {
             games = it.getSerializable("games") as ArrayList<Game>
             team = it.getSerializable("team") as Team
         }
-        Log.d("FragTeamGames", "games: $games")
     }
 
     override fun onCreateView(
@@ -68,8 +70,14 @@ class FragTeamGames : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        games = getGamesFromFileSystem(team.teamName, activity)
-        adapter.setGames(games)
-        adapter.notifyDataSetChanged()
+        Executors.newSingleThreadExecutor().execute() {
+            val mainHandler = Handler(Looper.getMainLooper())
+            val gotGames = getGamesFromFileSystem(team.teamName, activity)
+            mainHandler.post {
+                games = gotGames
+                adapter.setGames(gotGames)
+                adapter.notifyDataSetChanged()
+            }
+        }
     }
 }

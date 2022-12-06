@@ -19,6 +19,7 @@ class CreateGame : AppCompatActivity(){
 
         val spinnerTeam = findViewById<Spinner>(R.id.spinnerTeams)
         val textOppTeam = findViewById<EditText>(R.id.editTextOppTeam)
+        val textTimeLimit = findViewById<EditText>(R.id.editTextTimeLimit)
         val textPointCap = findViewById<EditText>(R.id.editTextPointCap)
         val textTODuration = findViewById<EditText>(R.id.editTextTODuration)
         val textHTDuration = findViewById<EditText>(R.id.editTextHTDuration)
@@ -47,6 +48,7 @@ class CreateGame : AppCompatActivity(){
             else {
                 try {
                     val oppTeam = textOppTeam.text.toString()
+                    val timeLimit = textTimeLimit.text.toString().toInt()
                     val pointCap = textPointCap.text.toString().toInt()
                     val toDuration = textTODuration.text.toString().toInt()
                     val htDuration = textHTDuration.text.toString().toInt()
@@ -57,6 +59,7 @@ class CreateGame : AppCompatActivity(){
                         0,
                         0,
                         pointCap,
+                        timeLimit,
                         toDuration,
                         htDuration,
                         toPerHalf,

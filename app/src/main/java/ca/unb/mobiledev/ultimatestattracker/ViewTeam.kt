@@ -2,6 +2,8 @@ package ca.unb.mobiledev.ultimatestattracker
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -10,8 +12,10 @@ import ca.unb.mobiledev.ultimatestattracker.adapter.PlayerAdapter
 import ca.unb.mobiledev.ultimatestattracker.adapter.ViewPagerAdapter
 import ca.unb.mobiledev.ultimatestattracker.databinding.ActivityViewTeamBinding
 import ca.unb.mobiledev.ultimatestattracker.helper.FileUtils.getGamesFromFileSystem
+import ca.unb.mobiledev.ultimatestattracker.model.Game
 import ca.unb.mobiledev.ultimatestattracker.model.Team
 import com.google.android.material.tabs.TabLayoutMediator
+import java.util.concurrent.Executors
 
 val tabArray = arrayOf(
     "Players",
@@ -22,11 +26,18 @@ val tabArray = arrayOf(
 class ViewTeam : AppCompatActivity() {
     lateinit var binding: ActivityViewTeamBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         val extras = intent.extras
         if (extras == null) finish()
         val team = extras?.getSerializable("team") as Team
-        val games = getGamesFromFileSystem(team.teamName, this)
-        super.onCreate(savedInstanceState)
+        var games : ArrayList<Game> = ArrayList()
+        Executors.newSingleThreadExecutor().execute(){
+            val mainHandler = Handler(Looper.getMainLooper())
+            var gotGames = getGamesFromFileSystem(team.teamName, this)
+            mainHandler.post {
+                games = gotGames
+            }
+        }
 
         // Make Bundle to pass info to fragments
         val bundle = Bundle()

@@ -13,18 +13,20 @@ class Game : java.io.Serializable {
     var myTeamScore: Int
     var oppTeamScore: Int
     var scoreLimit: Int
+    var timeLimit: Int
     var htMins: Int
     var toMins: Int
     var toLimit: Int
     var events: ArrayList<Event>
     var createdAt: String
 
-    constructor(myTeam: Team, oppTeamName: String, myTeamScore: Int, oppTeamScore: Int, scoreLimit: Int, htMins: Int, toMins: Int, toLimit: Int, events: ArrayList<Event>) {
+    constructor(myTeam: Team, oppTeamName: String, myTeamScore: Int, oppTeamScore: Int, scoreLimit: Int, timeLimit: Int, htMins: Int, toMins: Int, toLimit: Int, events: ArrayList<Event>) {
         this.myTeam = myTeam
         this.oppTeamName = oppTeamName
         this.myTeamScore = myTeamScore
         this.oppTeamScore = oppTeamScore
         this.scoreLimit = scoreLimit
+        this.timeLimit = timeLimit
         this.htMins = htMins
         this.toMins = toMins
         this.toLimit = toLimit

@@ -59,15 +59,12 @@ public class FileUtils {
     }
 
     public static ArrayList<Game> getGamesFromFileSystem(String teamName, Context c){
-        Log.d("FileUtils", "getGamesFromFileSystem: " + teamName);
         JsonUtils json = new JsonUtils();
         ArrayList<Game> games = new ArrayList<>();
         File gamesDir = getGameDir(teamName, c);
-        Log.d("FileUtils", "getGamesFromFileSystem: " + gamesDir.getAbsolutePath());
         for(File gameFile : Objects.requireNonNull(gamesDir.listFiles())) {
             Game game = null;
             if(gameFile.getName().startsWith("game_")) {
-                Log.d("FileUtils", "getGamesFromFileSystem found game: " + gameFile.getName());
                 // Read text from file into a string
                 try{
                     game = (Game) json.convertJsonToObject(readFromFile(gameFile), Game.class);
@@ -77,7 +74,6 @@ public class FileUtils {
             }
             if(game != null) games.add(game);
         }
-        Log.d("FileUtils", "getGamesFromFileSystem: " + games.size());
         return games;
     }
 

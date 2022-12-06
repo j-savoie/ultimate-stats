@@ -30,7 +30,9 @@
     <color name="tealDark">#FF018786</color>
 
     <color name="black">#FF000000</color>
+    <color name="greyDark">#313131</color>
     <color name="grey">#979797</color>
+    <color name="greyLight">#DDDDDD</color>
     <color name="white">#FFFFFFFF</color>
 
 </resources>
