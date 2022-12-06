@@ -14,7 +14,6 @@
         android:id="@+id/chipEventType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
         android:layout_marginRight="20dp"
         android:textAlignment="center" />
 
@@ -22,10 +21,8 @@
         android:id="@+id/textEventText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:fontFamily="sans-serif-medium"
-        android:gravity="bottom|center"
         android:text="TextView"
         android:textAlignment="textStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
