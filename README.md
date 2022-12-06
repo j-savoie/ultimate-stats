@@ -1,6 +1,6 @@
 This is  a frisbee stat tracking application for ultimate coaches, players and fans.
 
-**Features
+####Features
 Create Team
 View Teams
 View Team
@@ -10,7 +10,7 @@ View Stats
 Add Players
 Create Game
 Track Game Statistics
-**Known Issues
+##Known Issues
 ISS-1: Swapping between Landscape and Portrait mode in the Stat Tracking page causes unintended behavior.
 ISS-2: The application may skip frames during some activities when parsing files.
 ISS-3: Pop-up for starting on Offense/Defense not implemented. As such, on activity start, half-time end, all actions are temporarily made available as a workaround.
