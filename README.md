@@ -6,23 +6,23 @@ This is an ultimate frisbee stat tracking application for ultimate coaches, play
 - Target API Level: 33
 
 ## Features
-Create Team
+- Create Team
 
-  View Teams
+  -- View Teams
   
-  View Team
+  -- View Team
   
-  View Players
+  -- View Players
 
-View Games
+- View Games
 
-View Stats
+- View Stats
 
-Add Players
+- Add Players
 
-Create Game
+- Create Game
 
-Track Game Statistics
+- Track Game Statistics
 
 ## Known Issues
 
