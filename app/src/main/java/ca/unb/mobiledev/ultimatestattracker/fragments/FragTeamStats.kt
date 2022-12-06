@@ -90,65 +90,54 @@ class FragTeamStats : Fragment() {
             val playerStats = PlayerStats(player)
             playerStatsArray.add(playerStats)
         }
-        // Get all games from file system
-        var games : ArrayList<Game>
-        Executors.newSingleThreadExecutor().execute {
-            val mainHandler = Handler(Looper.getMainLooper())
-            games = getGamesFromFileSystem(team.teamName, requireContext())
-
-            for(game in games){
-                // Get all events from game
-                for(event in game.events){
-
-                    // Parse the event and increment the appropriate stats
-                    when(event.eventType){
-                        Event.EVENT_TYPE.Start -> {}
-                        Event.EVENT_TYPE.Stop -> {}
-                        Event.EVENT_TYPE.HTStart -> {}
-                        Event.EVENT_TYPE.HTStop -> {}
-                        Event.EVENT_TYPE.TOStart -> {}
-                        Event.EVENT_TYPE.TOStop -> {}
-                        Event.EVENT_TYPE.Substitution -> {}
-                        Event.EVENT_TYPE.OppGoal -> {}
-                        Event.EVENT_TYPE.Goal -> {
-                            var player = event.player
-                            var playerStats = playerStatsArray.find { it.player.number == player?.number }
-                            playerStats?.goals = playerStats?.goals?.plus(1)!!
-                            // If previous event was a pass, record assist
-                            if(game.events[game.events.indexOf(event)-1].eventType == Event.EVENT_TYPE.Pass){
-                                var assistPlayer = game.events[game.events.indexOf(event)-1].player
-                                var assistPlayerStats = playerStatsArray.find { it.player.number == assistPlayer?.number }
-                                assistPlayerStats?.assists = assistPlayerStats?.assists?.plus(1)!!
-                            }
-                        }
-                        Event.EVENT_TYPE.Pass -> {
-                            var player = event.player
-                            var player2 = event.player2
-                            var p1 = playerStatsArray.find { it.player.number == player?.number }
-                            var p2 = playerStatsArray.find { it.player.number == player2?.number }
-                            p1?.passes = p1?.passes?.plus(1)!!
-                            p2?.passesReceived = p2?.passesReceived?.plus(1)!!
-                        }
-                        Event.EVENT_TYPE.Steal -> {
-                            var player = event.player
-                            var playerStats = playerStatsArray.find { it.player.number == player?.number }
-                            playerStats?.steals = playerStats?.steals?.plus(1)!!
-                        }
-                        Event.EVENT_TYPE.Turnover -> {
-                            var player = event.player
-                            var playerStats = playerStatsArray.find { it.player.number == player?.number }
-                            playerStats?.turnovers = playerStats?.turnovers?.plus(1)!!
-                        }
-                        Event.EVENT_TYPE.Foul -> {
-                            var player = event.player
-                            var playerStats = playerStatsArray.find { it.player.number == player?.number }
-                            playerStats?.fouls = playerStats?.fouls?.plus(1)!!
-                        }
-                        else -> "Unknown Event"
+        var games : ArrayList<Game> = getGamesFromFileSystem(team.teamName, requireContext())
+        // For each game in the file system
+        for(game in games){
+            // Get all events from game
+            for(event in game.events){
+                // Parse the event and increment the appropriate stats
+                when(event.eventType){
+                    Event.EVENT_TYPE.Start -> {}
+                    Event.EVENT_TYPE.Stop -> {}
+                    Event.EVENT_TYPE.HTStart -> {}
+                    Event.EVENT_TYPE.HTStop -> {}
+                    Event.EVENT_TYPE.TOStart -> {}
+                    Event.EVENT_TYPE.TOStop -> {}
+                    Event.EVENT_TYPE.Substitution -> {}
+                    Event.EVENT_TYPE.OppGoal -> {}
+                    Event.EVENT_TYPE.Goal -> {
+                        var playerStats = playerStatsArray.find { it.player.number == event.player?.number }
+                        var player2Stats = playerStatsArray.find { it.player.number == event.player2?.number }
+                        playerStats?.goals = playerStats?.goals?.plus(1)!!
+                        player2Stats?.assists = player2Stats?.assists?.plus(1)!!
                     }
+                    Event.EVENT_TYPE.Pass -> {
+                        var player = event.player
+                        var player2 = event.player2
+                        var p1 = playerStatsArray.find { it.player.number == player?.number }
+                        var p2 = playerStatsArray.find { it.player.number == player2?.number }
+                        p1?.passes = p1?.passes?.plus(1)!!
+                        p2?.passesReceived = p2?.passesReceived?.plus(1)!!
+                    }
+                    Event.EVENT_TYPE.Steal -> {
+                        var player = event.player
+                        var playerStats = playerStatsArray.find { it.player.number == player?.number }
+                        playerStats?.steals = playerStats?.steals?.plus(1)!!
+                    }
+                    Event.EVENT_TYPE.Turnover -> {
+                        var player = event.player
+                        var playerStats = playerStatsArray.find { it.player.number == player?.number }
+                        playerStats?.turnovers = playerStats?.turnovers?.plus(1)!!
+                    }
+                    Event.EVENT_TYPE.Foul -> {
+                        var player = event.player
+                        var playerStats = playerStatsArray.find { it.player.number == player?.number }
+                        playerStats?.fouls = playerStats?.fouls?.plus(1)!!
+                    }
+                    else -> "Unknown Event"
                 }
             }
-        } // end of thread
+        }
         return playerStatsArray
     }
 
@@ -160,7 +149,7 @@ class FragTeamStats : Fragment() {
         val csvPrinter = CSVPrinter(writer, CSVFormat.DEFAULT
             .withHeader("Player", "Goals", "Assists", "Passes", "Passes Received", "Steals", "Turnovers", "Fouls"))
         for(playerStats in arr){
-            val playerData = Arrays.asList(
+            val playerData = listOf(
                 playerStats.player.getFormattedName(),
                 playerStats.goals,
                 playerStats.assists,

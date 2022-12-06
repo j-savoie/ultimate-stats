@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btn_new_game : Button = findViewById<Button>(R.id.btn_new_game)
+        var btn_new_game = findViewById<Button>(R.id.btn_new_game)
         btn_new_game.setOnClickListener {
             val intent = Intent(this, CreateGame::class.java)
             startActivity(intent)
@@ -31,7 +31,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ViewTeams::class.java)
             startActivity(intent)
         }
+    }
 
+    override fun onResume() {
+        super.onResume()
         Executors.newSingleThreadExecutor()
             .execute {
                 val mainHandler = Handler(Looper.getMainLooper())
@@ -40,7 +43,12 @@ class MainActivity : AppCompatActivity() {
                 teams = getTeamsFromFileSystem(this)
                 if(teams.size == 0) {
                     mainHandler.post {
-                        btn_new_game.isEnabled = false
+                        findViewById<Button>(R.id.btn_new_game).isEnabled = false
+                    }
+                }
+                else {
+                    mainHandler.post {
+                        findViewById<Button>(R.id.btn_new_game).isEnabled = true
                     }
                 }
             }

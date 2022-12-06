@@ -27,6 +27,7 @@
         </provider>
         <activity
             android:name=".CreateGame"
+            android:screenOrientation="portrait"
             android:exported="false"
             android:label="@string/title_activity_create_game"
             android:theme="@style/Theme.UltimateStatTracker.NoActionBar" >
@@ -36,6 +37,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,13 +45,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreateTeam" >
+        <activity android:name=".CreateTeam"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".AddPlayers" >
+        <activity android:name=".AddPlayers"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ViewTeams" >
+        <activity android:name=".ViewTeams"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ViewTeam" >
+        <activity android:name=".ViewTeam"
+            android:screenOrientation="portrait">
         </activity>
         <activity android:name=".StatTracker" >
         </activity>
