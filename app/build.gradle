@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    namespace 'ca.unb.mobiledev.ultimatestattracker'
     compileSdk 33
 
     defaultConfig {
